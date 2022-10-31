@@ -6,11 +6,11 @@ import "../styles/responsive.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <SessionProvider session={session}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </SessionProvider>
+    // <SessionProvider session={session}>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+    // </SessionProvider>
   );
 }
 
