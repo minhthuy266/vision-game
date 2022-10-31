@@ -14,6 +14,8 @@ const StyledImage = styled.div`
 
   img {
     height: calc(100vh - 80px - 50px);
+    width: 100vw;
+    object-fit: cover;
   }
 `;
 

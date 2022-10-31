@@ -12,9 +12,13 @@ import {
   StyledSocialGroup,
   StyledTextBtn,
 } from "./styles";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const LoginForm = () => {
   const [form] = Form.useForm();
+  const { data: session } = useSession();
+
+  console.log("dd", session);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -71,7 +75,7 @@ const LoginForm = () => {
                 <FacebookIcon />
               </span>
 
-              <span>
+              <span onClick={() => signIn({ prompt: "none" })}>
                 <GoogleIcon />
               </span>
             </StyledSocialGroup>

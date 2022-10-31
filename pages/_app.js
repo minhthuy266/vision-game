@@ -4,13 +4,13 @@ import "antd/dist/antd.css";
 import "../styles/globals.css";
 import "../styles/responsive.css";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, session }) {
   return (
-    // <SessionProvider session={session}>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-    // </SessionProvider>
+    <SessionProvider session={session}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SessionProvider>
   );
 }
 
