@@ -10,6 +10,13 @@ import Image from "next/image";
 
 const Header = () => {
   const { data: session, status } = useSession();
+  const { push, asPath, pathname } = useRouter();
+
+  const handleSignIn = () => {
+    pathname.includes("/auth/login")
+      ? console.log("object")
+      : push(`/auth/login?callbackUrl=${asPath}`);
+  };
 
   const items = [
     {
@@ -43,7 +50,7 @@ const Header = () => {
       label: session ? (
         <div>{session.user.name}</div>
       ) : (
-        <div onClick={() => signIn()}>Đăng nhập</div>
+        <div onClick={handleSignIn}>Đăng nhập</div>
       ),
       key: "/auth/login",
       icon: session ? (

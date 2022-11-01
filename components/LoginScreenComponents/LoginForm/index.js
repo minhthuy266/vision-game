@@ -14,6 +14,7 @@ import {
 } from "./styles";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
+import AbsoluteLoader from "@/components/common/UIHandler/Loader/AbsoluteLoader";
 
 const LoginForm = () => {
   const [form] = Form.useForm();
@@ -39,7 +40,7 @@ const LoginForm = () => {
   const { data: session, status } = useSession();
   const { push } = useRouter();
 
-  if (status === "loading") return <div>Checking Authentication...</div>;
+  if (status === "loading") return <AbsoluteLoader />;
 
   if (session) {
     push("/");
