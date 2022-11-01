@@ -1,22 +1,39 @@
-import { Menu } from "antd";
-import { useState } from "react";
+import { Button, Menu } from "antd";
+import { useEffect, useState } from "react";
 import UserHeader from "public/assets/icons/UserHeader";
 import VisionLogo from "public/assets/icons/VisionLogo";
-import { HeaderContainer } from "./styles";
+import { HeaderContainer, StyledLoginBtn } from "./styles";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 
 const Header = () => {
+  const router = useRouter();
+  const [current, setCurrent] = useState(router.pathname);
+  const [isLoginScreen, setIsLoginScreen] = useState(false);
   const { data: session, status } = useSession();
   const { push, asPath, pathname } = useRouter();
 
+  useEffect(() => {
+    if (session) {
+      setCurrent("0");
+    }
+  }, [session]);
+
   const handleSignIn = () => {
+    setIsLoginScreen(true);
+
     pathname.includes("/auth/login")
       ? console.log("object")
       : push(`/auth/login?callbackUrl=${asPath}`);
   };
+
+  useEffect(() => {
+    pathname.includes("/auth/login")
+      ? setIsLoginScreen(true)
+      : setIsLoginScreen(false);
+  }, [pathname]);
 
   const items = [
     {
@@ -48,28 +65,45 @@ const Header = () => {
 
     {
       label: session ? (
-        <div>{session.user.name}</div>
+        <div>
+          <Image
+            src={session.user.image}
+            alt="User Avatar"
+            width={30}
+            height={30}
+            style={{ borderRadius: "50%" }}
+          />{" "}
+          &nbsp;
+          {session.user.name}
+        </div>
       ) : (
-        <div onClick={handleSignIn}>Đăng nhập</div>
+        <StyledLoginBtn isLoginScreen={isLoginScreen}>
+          <Button onClick={handleSignIn}>
+            <UserHeader /> &nbsp; Đăng nhập
+          </Button>
+        </StyledLoginBtn>
       ),
-      key: "/auth/login",
-      icon: session ? (
-        <Image
-          src={session.user.image}
-          alt="User Avatar"
-          width={30}
-          height={30}
-          style={{ borderRadius: "50%" }}
-        />
-      ) : (
-        <UserHeader />
-      ),
+      danger: session ? false : true,
+      key: session ? "/auth/login" : null,
+      children: session
+        ? [
+            {
+              label: "Hồ sơ cá nhân",
+              key: "setting:1",
+            },
+            {
+              label: "Cài đặt và bảo mật",
+              key: "setting:2",
+            },
+            {
+              label: <div onClick={signOut}>Đăng xuất</div>,
+              key: "setting:3",
+            },
+          ]
+        : [],
     },
   ];
 
-  const router = useRouter();
-
-  const [current, setCurrent] = useState(router.pathname);
   const onClick = (e) => {
     setCurrent(e.key);
   };
