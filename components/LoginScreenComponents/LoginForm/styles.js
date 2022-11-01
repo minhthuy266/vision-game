@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const LoginFormContainer = styled.div`
   padding: 0 15vw;
+
+  @media only screen and (min-width: 120.0625em) {
+    padding: 0 calc((100vw - 1332px) / 2);
+  }
 `;
 
 export const LoginFormWrapper = styled.div`

@@ -13,6 +13,10 @@ export const HeaderContainer = styled.div`
   right: 0;
   background: #fff;
 
+  @media only screen and (min-width: 120.0625em) {
+    padding: 0 calc((100vw - 1332px) / 2);
+  }
+
   .ant-menu-horizontal {
     border-bottom: 1px solid transparent;
   }
