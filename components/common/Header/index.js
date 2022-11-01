@@ -23,6 +23,7 @@ const Header = () => {
 
   const handleSignIn = () => {
     setIsLoginScreen(true);
+    setCurrent(null);
 
     pathname.includes("/auth/login")
       ? console.log("object")

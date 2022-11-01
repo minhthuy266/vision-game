@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledWrapper = styled.div`
   padding: 0 15vw;
+  margin-bottom: 4rem;
 `;
 
 export const StyledSectionWrapper = styled.div`
