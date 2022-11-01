@@ -1,6 +1,11 @@
 import { SessionProvider } from "next-auth/react";
 import Layout from "../components/layouts";
 import "antd/dist/antd.css";
+import "swiper/css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import "../styles/globals.css";
 import "../styles/responsive.css";
 
