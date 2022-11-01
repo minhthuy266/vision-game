@@ -12,6 +12,7 @@ export const HeaderContainer = styled.div`
   left: 0;
   right: 0;
   background: #fff;
+  border-bottom: 1px solid #cccccc;
 
   @media only screen and (min-width: 120.0625em) {
     padding: 0 calc((100vw - 1332px) / 2);
@@ -25,6 +26,8 @@ export const HeaderContainer = styled.div`
     border-radius: 10px;
     border: 1px solid #23a8f5;
     color: #23a8f5;
+    display: flex;
+    align-items: center;
   }
 
   ul {
