@@ -5,8 +5,12 @@ import VisionLogo from "public/assets/icons/VisionLogo";
 import { HeaderContainer } from "./styles";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Image from "next/image";
 
 const Header = () => {
+  const { data: session, status } = useSession();
+
   const items = [
     {
       label: <Link href="/game-store">Kho Game</Link>,
@@ -36,9 +40,23 @@ const Header = () => {
     },
 
     {
-      label: <Link href="/auth/login">Đăng nhập</Link>,
+      label: session ? (
+        <div>{session.user.name}</div>
+      ) : (
+        <div onClick={() => signIn()}>Đăng nhập</div>
+      ),
       key: "/auth/login",
-      icon: <UserHeader />,
+      icon: session ? (
+        <Image
+          src={session.user.image}
+          alt="User Avatar"
+          width={30}
+          height={30}
+          style={{ borderRadius: "50%" }}
+        />
+      ) : (
+        <UserHeader />
+      ),
     },
   ];
 

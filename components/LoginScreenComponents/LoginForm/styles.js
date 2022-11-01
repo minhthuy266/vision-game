@@ -83,6 +83,13 @@ export const StyledForgotPassBtn = styled.div`
 
 export const StyledSocialGroup = styled.div`
   margin: 1rem auto 2rem auto;
+  display: flex;
+  justify-content: center;
+
+  > div {
+    margin-right: 1rem;
+    cursor: pointer;
+  }
 `;
 
 export const StyledTextBtn = styled.div`

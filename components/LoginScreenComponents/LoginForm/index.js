@@ -13,12 +13,10 @@ import {
   StyledTextBtn,
 } from "./styles";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const LoginForm = () => {
   const [form] = Form.useForm();
-  const { data: session } = useSession();
-
-  console.log("dd", session);
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -26,6 +24,28 @@ const LoginForm = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  const providers = [
+    {
+      name: "facebook",
+      Icon: <FacebookIcon />,
+    },
+    {
+      name: "google",
+      Icon: <GoogleIcon />,
+    },
+  ];
+
+  const { data: session, status } = useSession();
+  const { push } = useRouter();
+
+  if (status === "loading") return <div>Checking Authentication...</div>;
+
+  if (session) {
+    push("/");
+  }
+
+  const handleOAuthSignIn = (provider) => () => signIn(provider);
 
   return (
     <LoginFormContainer>
@@ -71,13 +91,11 @@ const LoginForm = () => {
             </div>
 
             <StyledSocialGroup>
-              <span style={{ marginRight: "4rem" }}>
-                <FacebookIcon />
-              </span>
-
-              <span onClick={() => signIn({ prompt: "none" })}>
-                <GoogleIcon />
-              </span>
+              {providers.map(({ name, Icon }) => (
+                <div key={name} onClick={handleOAuthSignIn(name)}>
+                  {Icon}
+                </div>
+              ))}
             </StyledSocialGroup>
 
             <StyledTextBtn>

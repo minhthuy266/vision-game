@@ -34,6 +34,16 @@ export const HeaderContainer = styled.div`
     transition: none;
   }
 
+  .ant-menu-horizontal > .ant-menu-item::after,
+  .ant-menu-horizontal > .ant-menu-submenu::after {
+    transition: none;
+  }
+
+  .ant-menu-horizontal .ant-menu-item,
+  .ant-menu-horizontal .ant-menu-submenu-title {
+    transition: none;
+  }
+
   .ant-menu-overflow-item.ant-menu-item {
     display: flex;
     align-items: center;

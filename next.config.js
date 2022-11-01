@@ -5,6 +5,10 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+
+  images: {
+    domains: ["platform-lookaside.fbsbx.com", "lh3.googleusercontent.com"],
+  },
 };
 
 module.exports = nextConfig;
