@@ -4,7 +4,7 @@ export const StyledSectionWrapper = styled.div`
   background: #ffffff;
   box-shadow: 4px 4px 16px rgba(23, 25, 26, 0.16);
   border-radius: 12px;
-  padding: 2rem 5rem;
+  padding: 2rem 4rem;
 `;
 
 export const StyledList = styled.div`

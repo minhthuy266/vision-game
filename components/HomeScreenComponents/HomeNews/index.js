@@ -2,7 +2,15 @@ import Image from "next/image";
 import React from "react";
 import HeaderSection from "../HeaderSection";
 import { StyledWrapper } from "../TopGame/styles";
-import { StyledNewsList, StyledSectionWrapper, StyledTopNews } from "./styles";
+import {
+  StyledCardBody,
+  StyledCardBodyDate,
+  StyledCardBodyTitle,
+  StyledNewsList,
+  StyledSectionWrapper,
+  StyledTopNews,
+  StyledTopNewsTitle,
+} from "./styles";
 import NewsItem1 from "public/assets/images/HomeScreen_NewsItem1.png";
 import NewsItem2 from "public/assets/images/HomeScreen_NewsItem2.png";
 import NewsItem3 from "public/assets/images/HomeScreen_NewsItem3.png";
@@ -18,7 +26,8 @@ const HomeNews = () => {
   const newsList = [
     {
       id: 2,
-      title: "Westward: Tây Du Đại Thoại",
+      title:
+        "Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane",
       excerpt:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid itaque possimus tenetur error eius velit reprehenderit natus. Iure, cupiditate ducimus?",
       img: NewsItem2,
@@ -26,7 +35,8 @@ const HomeNews = () => {
 
     {
       id: 3,
-      title: "Linh Giới 3D - Soul World",
+      title:
+        "Cải tiến Lõi Công Nghệ trong Đấu Trường Chân Lý bản Thành Phố Ngầm",
       excerpt:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid itaque possimus tenetur error eius velit reprehenderit natus. Iure, cupiditate ducimus?",
       img: NewsItem3,
@@ -34,7 +44,8 @@ const HomeNews = () => {
 
     {
       id: 4,
-      title: "Thiên Ngoại Giang Hồ",
+      title:
+        'Top 3 tộc - hệ mang tính chất "may rủi" cao nhất tại Đấu Trường Chân Lý mùa...',
       excerpt:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid itaque possimus tenetur error eius velit reprehenderit natus. Iure, cupiditate ducimus?",
       img: NewsItem4,
@@ -42,7 +53,8 @@ const HomeNews = () => {
 
     {
       id: 5,
-      title: "Kiếm Ma 3D",
+      title:
+        "Linh Thú Chibi Champions mới đắt còn hơn skin Huyền Thoại, cộng đồng ĐTCL...",
       excerpt:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid itaque possimus tenetur error eius velit reprehenderit natus. Iure, cupiditate ducimus?",
       img: NewsItem5,
@@ -50,7 +62,8 @@ const HomeNews = () => {
 
     {
       id: 6,
-      title: "Nhất Kiếm Giang Hồ Mobile",
+      title:
+        'Nhìn lại phiên bản đầu tiên của LMHT, game thủ không khỏi bất ngờ: "Nhiều cơ..."',
       excerpt:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid itaque possimus tenetur error eius velit reprehenderit natus. Iure, cupiditate ducimus?",
       img: NewsItem6,
@@ -58,7 +71,8 @@ const HomeNews = () => {
 
     {
       id: 7,
-      title: "Dân Chơi Tam Quốc",
+      title:
+        'Top 3 cơ chế "siêu ảo" lần đầu tiên xuất hiện tại Đấu Trường Chân Lý mùa 6',
       excerpt:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid itaque possimus tenetur error eius velit reprehenderit natus. Iure, cupiditate ducimus?",
       img: NewsItem7,
@@ -66,7 +80,8 @@ const HomeNews = () => {
 
     {
       id: 8,
-      title: "MU: Vinh Dự",
+      title:
+        "Mỗi ô đất trong game Chiến Vương Tam Quốc là một cuộc tranh giành đầy khốc...",
       excerpt:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid itaque possimus tenetur error eius velit reprehenderit natus. Iure, cupiditate ducimus?",
       img: NewsItem8,
@@ -74,18 +89,11 @@ const HomeNews = () => {
 
     {
       id: 9,
-      title: "Soul Land: Đấu La Đại Lục",
+      title:
+        "Cáp quang lại đứt, cùng nhìn lại những game offline huyền thoại, ngày mà cùng nhìn lại những game offline huyền thoại",
       excerpt:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid itaque possimus tenetur error eius velit reprehenderit natus. Iure, cupiditate ducimus?",
       img: NewsItem9,
-    },
-
-    {
-      id: 10,
-      title: "Đế Vương Tam Quốc",
-      excerpt:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid itaque possimus tenetur error eius velit reprehenderit natus. Iure, cupiditate ducimus?",
-      img: NewsItem10,
     },
   ];
 
@@ -97,6 +105,21 @@ const HomeNews = () => {
           <div>
             <Image src={NewsItem1} alt="News Item 1" />
           </div>
+
+          <div>
+            <StyledTopNewsTitle>
+              Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt Nam!
+            </StyledTopNewsTitle>
+
+            <div>
+              <div>
+                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
+                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
+                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
+                tướng siêu hiếm trong dịp đặc biệt này.
+              </div>
+            </div>
+          </div>
         </StyledTopNews>
 
         <StyledNewsList>
@@ -107,9 +130,10 @@ const HomeNews = () => {
                   <Image src={el.img} alt={el.name} />
                 </div>
 
-                <div>{el.title}</div>
-
-                <div>{el.excerpt}</div>
+                <StyledCardBody>
+                  <StyledCardBodyDate>15/08/2022 23:59</StyledCardBodyDate>
+                  <StyledCardBodyTitle>{el.title}</StyledCardBodyTitle>
+                </StyledCardBody>
               </div>
             );
           })}

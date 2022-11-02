@@ -4,12 +4,12 @@ export const StyledSectionWrapper = styled.div`
   background: #ffffff;
   box-shadow: 4px 4px 16px rgba(23, 25, 26, 0.16);
   border-radius: 12px;
-  padding: 2rem 5rem;
+  padding: 2rem 4rem;
 `;
 
 export const StyledTopNews = styled.div`
-  height: 310px;
-  margin-bottom: 2rem;
+  height: 31rem;
+  margin-bottom: 4rem;
   grid-template-columns: repeat(2, 1fr);
   display: grid;
   grid-gap: 2rem;
@@ -19,19 +19,53 @@ export const StyledTopNews = styled.div`
   }
 `;
 
+export const StyledTopNewsTitle = styled.div`
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 4rem;
+  margin-bottom: 2rem;
+`;
+
 export const StyledNewsList = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, calc((1332px - 16rem) / 4));
+  grid-template-columns: repeat(4, calc((100% - 6rem) / 4));
   grid-gap: 2rem;
+  margin-bottom: 2rem;
 
   img {
     width: 100%;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 12px 12px 0 0;
     margin-bottom: 0.4rem;
   }
 
-  div {
+  > div {
     border-radius: 12px;
+    border: 1px solid rgba(186, 186, 187, 0.4);
+    box-shadow: rgba(0, 0, 0, 0.12) 4px 4px 16px;
   }
+`;
+
+export const StyledCardBody = styled.div`
+  padding: 0 1.2rem 1.2rem 1.2rem;
+`;
+
+export const StyledCardBodyDate = styled.div`
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  color: rgb(187, 188, 189);
+  padding: 0.6rem 0;
+`;
+
+export const StyledCardBodyTitle = styled.div`
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 2.3rem;
+  display: -webkit-box;
+  overflow-y: hidden;
+  -webkit-line-clamp: 3;
+  -moz-box-orient: vertical;
+  word-break: break-word;
+  color: rgb(26, 29, 33);
 `;
