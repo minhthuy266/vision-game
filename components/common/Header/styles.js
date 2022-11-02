@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
   left: 0;
   right: 0;
   background: #fff;
-  border-bottom: 1px solid #cccccc;
+  box-shadow: 4px 4px 16px rgba(23, 25, 26, 0.16);
 
   @media only screen and (min-width: 120.0625em) {
     padding: 0 calc((100vw - 1332px) / 2);
