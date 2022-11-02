@@ -1,6 +1,5 @@
-import React from "react";
-import HeaderSection from "../HeaderSection";
-import { StyledList, StyledSectionWrapper } from "./styles";
+import GameConsole from "public/assets/icons/GameConsole";
+import { StyledBody, StyledHeader, StyledSectionWrapper } from "./styles";
 import GameItem1 from "public/assets/images/HomeScreen_ListGame_Item1.png";
 import GameItem2 from "public/assets/images/HomeScreen_ListGame_Item2.png";
 import GameItem3 from "public/assets/images/HomeScreen_ListGame_Item3.png";
@@ -17,11 +16,9 @@ import GameItem13 from "public/assets/images/HomeScreen_ListGame_Item13.png";
 import GameItem14 from "public/assets/images/HomeScreen_ListGame_Item14.png";
 import GameItem15 from "public/assets/images/HomeScreen_ListGame_Item15.png";
 import GameItem16 from "public/assets/images/HomeScreen_ListGame_Item16.png";
-
 import Image from "next/image";
-import { StyledWrapper } from "styles/styles";
 
-const GameList = () => {
+const GameTab = () => {
   const gameList = [
     {
       id: 1,
@@ -121,26 +118,28 @@ const GameList = () => {
   ];
 
   return (
-    <StyledWrapper>
-      <StyledSectionWrapper>
-        <HeaderSection href="/" title="Danh sách game" />
+    <StyledSectionWrapper>
+      <StyledHeader>
+        <div>
+          <GameConsole /> &nbsp; Danh sách game
+        </div>
+      </StyledHeader>
 
-        <StyledList>
-          {gameList.map((el) => {
-            return (
-              <div key={el.id}>
-                <div>
-                  <Image src={el.img} alt={el.name} />
-                </div>
-
-                <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+      <StyledBody>
+        {gameList.map((el) => {
+          return (
+            <div key={el.id}>
+              <div>
+                <Image src={el.img} alt={el.name} />
               </div>
-            );
-          })}
-        </StyledList>
-      </StyledSectionWrapper>
-    </StyledWrapper>
+
+              <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+            </div>
+          );
+        })}
+      </StyledBody>
+    </StyledSectionWrapper>
   );
 };
 
-export default GameList;
+export default GameTab;

@@ -1,5 +1,8 @@
+import AbsoluteLoader from "@/components/common/UIHandler/Loader/AbsoluteLoader";
 import { Button, Form, Input } from "antd";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import FacebookIcon from "public/assets/icons/FacebookIcon";
 import GoogleIcon from "public/assets/icons/GoogleIcon";
 import LoginBtn from "public/assets/icons/LoginBtn";
@@ -12,9 +15,6 @@ import {
   StyledSocialGroup,
   StyledTextBtn,
 } from "./styles";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/router";
-import AbsoluteLoader from "@/components/common/UIHandler/Loader/AbsoluteLoader";
 
 const LoginForm = () => {
   const [form] = Form.useForm();

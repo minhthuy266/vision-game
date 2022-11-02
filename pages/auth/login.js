@@ -1,4 +1,4 @@
-import LoginForm from "@/components/LoginScreenComponents/LoginForm";
+import LoginFormComp from "@/components/LoginScreenComponents/LoginForm";
 import Image from "next/image";
 import BackgroundImage from "public/assets/images/LoginScreen_Banner.png";
 import styled from "styled-components";
@@ -25,7 +25,7 @@ const LoginScreen = () => {
       <StyledImage>
         <Image src={BackgroundImage} alt="Login Background Image" />
       </StyledImage>
-      <LoginForm />
+      <LoginFormComp />
     </LoginScreenContainer>
   );
 };

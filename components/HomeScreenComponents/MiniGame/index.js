@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderSection from "../HeaderSection";
-import { StyledWrapper } from "../TopGame/styles";
+import { StyledWrapper } from "styles/styles";
 import { StyledList, StyledSectionWrapper } from "./styles";
 import MiniGame1 from "public/assets/images/HomeScreen_MiniGame1.png";
 import MiniGame2 from "public/assets/images/HomeScreen_MiniGame2.png";

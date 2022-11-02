@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import HeaderSection from "../HeaderSection";
-import { StyledWrapper } from "../TopGame/styles";
+import { StyledWrapper } from "styles/styles";
 import {
   StyledCardBody,
   StyledCardBodyDate,

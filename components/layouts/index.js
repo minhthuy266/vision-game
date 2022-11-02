@@ -24,9 +24,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <MainContainer isHasBanner={isHasBanner} isAuthScreen={isAuthScreen}>
-        {children}
-      </MainContainer>
+      <MainContainer isAuthScreen={isAuthScreen}>{children}</MainContainer>
       <Footer />
     </>
   );

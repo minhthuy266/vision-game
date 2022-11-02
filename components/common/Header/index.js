@@ -15,11 +15,11 @@ const Header = () => {
   const { data: session, status } = useSession();
   const { push, asPath, pathname } = useRouter();
 
-  useEffect(() => {
-    if (session) {
-      setCurrent("0");
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session) {
+  //     setCurrent("0");
+  //   }
+  // }, [session]);
 
   const handleSignIn = () => {
     setIsLoginScreen(true);

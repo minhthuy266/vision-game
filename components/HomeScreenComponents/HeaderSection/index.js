@@ -4,7 +4,7 @@ import TopGameIcon from "public/assets/icons/TopGameIcon";
 import React from "react";
 import { StyledHeader } from "./styles";
 
-const HeaderSection = ({ title, href }) => {
+const HeaderSection = ({ title, href, hasViewAllBtn }) => {
   return (
     <StyledHeader>
       <div>
