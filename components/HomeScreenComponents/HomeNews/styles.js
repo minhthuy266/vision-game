@@ -19,6 +19,10 @@ export const StyledTopNews = styled.div`
   }
 `;
 
+export const StyledCardBody = styled.div`
+  padding: 0 1.2rem 1.2rem 1.2rem;
+`;
+
 export const StyledTopNewsTitle = styled.div`
   font-weight: 700;
   font-size: 3.2rem;
@@ -44,10 +48,6 @@ export const StyledNewsList = styled.div`
     border: 1px solid rgba(186, 186, 187, 0.4);
     box-shadow: rgba(0, 0, 0, 0.12) 4px 4px 16px;
   }
-`;
-
-export const StyledCardBody = styled.div`
-  padding: 0 1.2rem 1.2rem 1.2rem;
 `;
 
 export const StyledCardBodyDate = styled.div`

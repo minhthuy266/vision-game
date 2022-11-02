@@ -15,8 +15,8 @@ const TopGame = () => {
         <Swiper
           spaceBetween={20}
           slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
           slidesPerGroup={3}
           loop={true}
           loopFillGroupWithBlank={true}

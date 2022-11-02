@@ -1,16 +1,4 @@
 import Image from "next/image";
-import React from "react";
-import HeaderSection from "../HeaderSection";
-import { StyledWrapper } from "styles/styles";
-import {
-  StyledCardBody,
-  StyledCardBodyDate,
-  StyledCardBodyTitle,
-  StyledNewsList,
-  StyledSectionWrapper,
-  StyledTopNews,
-  StyledTopNewsTitle,
-} from "./styles";
 import NewsItem1 from "public/assets/images/HomeScreen_NewsItem1.png";
 import NewsItem2 from "public/assets/images/HomeScreen_NewsItem2.png";
 import NewsItem3 from "public/assets/images/HomeScreen_NewsItem3.png";
@@ -20,7 +8,17 @@ import NewsItem6 from "public/assets/images/HomeScreen_NewsItem6.png";
 import NewsItem7 from "public/assets/images/HomeScreen_NewsItem7.png";
 import NewsItem8 from "public/assets/images/HomeScreen_NewsItem8.png";
 import NewsItem9 from "public/assets/images/HomeScreen_NewsItem9.png";
-import NewsItem10 from "public/assets/images/HomeScreen_NewsItem10.png";
+import { StyledWrapper } from "styles/styles";
+import HeaderSection from "../HeaderSection";
+import {
+  StyledCardBody,
+  StyledCardBodyDate,
+  StyledCardBodyTitle,
+  StyledNewsList,
+  StyledSectionWrapper,
+  StyledTopNews,
+  StyledTopNewsTitle,
+} from "./styles";
 
 const HomeNews = () => {
   const newsList = [
