@@ -17,6 +17,11 @@ export const StyledTopNews = styled.div`
   div:first-child {
     border-radius: 12px;
   }
+
+  img {
+    width: 100%;
+    object-fit: fill;
+  }
 `;
 
 export const StyledCardBody = styled.div`
