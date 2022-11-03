@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const StyledBannerWrapper = styled.div`
-  img {
+  img.banner-image {
     width: 100vw;
-    height: auto;
+    height: 60vh;
     object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    top: 80px;
   }
 `;

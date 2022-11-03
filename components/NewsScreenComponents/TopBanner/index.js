@@ -6,7 +6,7 @@ import { StyledBannerWrapper } from "./styles";
 export const TopBanner = () => {
   return (
     <StyledBannerWrapper>
-      <Image src={Banner} alt="News Screen Banner" />
+      <Image src={Banner} alt="News Screen Banner" className="banner-image" />
 
       <NewsTabs />
     </StyledBannerWrapper>

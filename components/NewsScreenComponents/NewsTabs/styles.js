@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
 export const StyledTabsWrapper = styled.div`
+  background: #ffffff;
+  box-shadow: 4px 4px 16px rgba(23, 25, 26, 0.16);
+  border-radius: 12px;
+  margin-top: 1rem;
+  padding: 2rem 4rem;
+  margin-top: 60vh;
+
   .ant-tabs-nav-wrap {
     display: flex;
     justify-content: center;
@@ -22,4 +29,13 @@ export const StyledTabsWrapper = styled.div`
   .ant-tabs-bottom > div > .ant-tabs-nav::before {
     border-bottom: 1px solid transparent;
   }
+`;
+
+export const StyledTabPane = styled.div``;
+
+export const StyledNewsContainer = styled.div`
+  display: grid;
+  grid-template-columns: calc(75% - 4rem) 25%;
+  margin-top: 2rem;
+  grid-gap: 4rem;
 `;

@@ -1,21 +1,52 @@
 import { Tabs } from "antd";
-import Link from "next/link";
 import { StyledWrapper } from "styles/styles";
+import MainNewsComponent from "./MainNewsComponent";
 import { StyledTabsWrapper } from "./styles";
 
 const NewsTabs = () => {
+  const onChange = (key) => {
+    console.log(key);
+  };
+
   return (
     <StyledWrapper>
       <StyledTabsWrapper>
-        <Tabs defaultActiveKey="1">
-          <Tabs.TabPane tab="Tất Cả" key="1">
-            <Link href="/news/all-news"></Link>
-          </Tabs.TabPane>
-          <Tabs.TabPane tab="Tin Nóng" key="2"></Tabs.TabPane>
-          <Tabs.TabPane tab="Game Mới" key="3"></Tabs.TabPane>
-          <Tabs.TabPane tab="Sự Kiện" key="4"></Tabs.TabPane>
-          <Tabs.TabPane tab="Ưu Đãi" key="5"></Tabs.TabPane>
-        </Tabs>
+        <Tabs
+          defaultActiveKey="1"
+          onChange={onChange}
+          items={[
+            {
+              label: `Tất Cả`,
+              key: "1",
+              children: <MainNewsComponent />,
+              href: "news/all-news",
+            },
+            {
+              label: `Tin Nóng`,
+              key: "2",
+              children: <MainNewsComponent />,
+              href: "news/all-news",
+            },
+            {
+              label: `Game Mới`,
+              key: "3",
+              children: <MainNewsComponent />,
+              href: "news/all-news",
+            },
+
+            {
+              label: `Sự kiện`,
+              key: "4",
+              children: <MainNewsComponent />,
+            },
+
+            {
+              label: `Ưu đãi`,
+              key: "5",
+              children: <MainNewsComponent />,
+            },
+          ]}
+        />
       </StyledTabsWrapper>
     </StyledWrapper>
   );
