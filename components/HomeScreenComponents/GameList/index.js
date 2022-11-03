@@ -20,6 +20,7 @@ import GameItem16 from "public/assets/images/HomeScreen_ListGame_Item16.png";
 
 import Image from "next/image";
 import { StyledWrapper } from "styles/styles";
+import Link from "next/link";
 
 const GameList = () => {
   const gameList = [
@@ -129,11 +130,13 @@ const GameList = () => {
           {gameList.map((el) => {
             return (
               <div key={el.id}>
-                <div>
-                  <Image src={el.img} alt={el.name} />
-                </div>
+                <Link href={`game/vinh-hang-ky-nguyen`}>
+                  <div>
+                    <Image src={el.img} alt={el.name} />
+                  </div>
 
-                <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+                  <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+                </Link>
               </div>
             );
           })}

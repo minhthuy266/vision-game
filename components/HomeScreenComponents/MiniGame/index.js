@@ -9,6 +9,7 @@ import MiniGame4 from "public/assets/images/HomeScreen_MiniGame4.png";
 import MiniGame5 from "public/assets/images/HomeScreen_MiniGame5.png";
 import MiniGame6 from "public/assets/images/HomeScreen_MiniGame6.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const MiniGame = () => {
   const miniGameList = [
@@ -58,11 +59,13 @@ const MiniGame = () => {
           {miniGameList.map((el) => {
             return (
               <div key={el.id}>
-                <div>
-                  <Image src={el.img} alt={el.name} />
-                </div>
+                <Link href={`game/vinh-hang-ky-nguyen`}>
+                  <div>
+                    <Image src={el.img} alt={el.name} />
+                  </div>
 
-                <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+                  <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+                </Link>
               </div>
             );
           })}

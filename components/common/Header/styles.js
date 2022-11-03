@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
-  padding: 0 15vw;
+  padding: 0 12.5vw;
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -15,7 +15,7 @@ export const HeaderContainer = styled.div`
   box-shadow: 4px 4px 16px rgba(23, 25, 26, 0.16);
 
   @media only screen and (min-width: 120.0625em) {
-    padding: 0 calc((100vw - 1332px) / 2);
+    padding: 0 calc((100vw - 1440px) / 2);
   }
 
   .ant-menu-horizontal {
@@ -38,6 +38,14 @@ export const HeaderContainer = styled.div`
     font-size: 1.6rem;
     line-height: 2rem;
     color: #bababb;
+
+    li:nth-child(7) {
+      margin-left: 3rem;
+    }
+  }
+
+  .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
+    padding: 0;
   }
 
   .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after,
