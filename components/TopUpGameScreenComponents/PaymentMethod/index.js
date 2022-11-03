@@ -14,7 +14,7 @@ import VTCPay from "public/assets/images/TopUpScreen_VTCPay.png";
 import Momo from "public/assets/images/TopUpScreen_Momo.png";
 import Vimo from "public/assets/images/TopUpScreen_Vimo.png";
 import VNPay from "public/assets/images/TopUpScreen_VNPay.png";
-// import ZaloPay from "public/assets/images/TopUpScreen_ZaloPay.png";
+import ZaloPay from "public/assets/images/TopUpScreen_ZaloPay.png";
 import Image from "next/image";
 
 const PaymentMethod = () => {
