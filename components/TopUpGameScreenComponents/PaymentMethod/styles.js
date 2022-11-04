@@ -34,6 +34,10 @@ export const StyledWalletGroup = styled.div`
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 2rem;
 
+  @media only screen and (max-width: 56.25em) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   img {
     width: 100%;
     height: 100%;

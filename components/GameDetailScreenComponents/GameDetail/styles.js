@@ -31,11 +31,18 @@ export const StyledDescription = styled.div`
   line-height: 2.4rem;
   display: grid;
   grid-template-columns: 55% calc(45% - 2rem);
-  grid-gap: 5rem;
+  grid-gap: 2rem;
 `;
 
 export const StyledSlider = styled.div`
   margin-top: 4rem;
+
+  img {
+    @media only screen and (max-width: 112.5em) {
+      width: 92%;
+      height: auto;
+    }
+  }
 `;
 
 export const StyledDescriptionLeft = styled.div`
@@ -61,8 +68,6 @@ export const StyledJoinCommunity = styled.div`
 `;
 
 export const StyledDescriptionRight = styled.div`
-  width: 59.8rem;
-  height: 63.8rem;
   background: #ffffff;
   box-shadow: 4px 4px 16px rgba(23, 25, 26, 0.16);
   border-radius: 12px;

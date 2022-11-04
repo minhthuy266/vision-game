@@ -14,3 +14,40 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.tablet-mobile-drawer .ant-drawer-header {
+  border-bottom: 1px solid transparent;
+}
+
+.tablet-mobile-drawer .ant-drawer-header-title {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tablet-mobile-drawer .ant-menu-inline,
+.tablet-mobile-drawer .ant-menu-vertical,
+.tablet-mobile-drawer .ant-menu-vertical-left {
+  border-right: 1px solid transparent !important;
+}
+
+.tablet-mobile-drawer .ant-menu-item {
+  text-align: end;
+}
+
+.tablet-mobile-drawer
+  .ant-menu-vertical
+  .ant-menu-item-group-list
+  .ant-menu-submenu-title,
+.tablet-mobile-drawer .ant-menu-vertical .ant-menu-submenu-title {
+  padding-right: 0;
+}
+
+.tablet-mobile-drawer .ant-menu-submenu-arrow {
+  display: none;
+}
+
+.tablet-mobile-drawer .ant-menu-submenu.ant-menu-submenu-vertical,
+.tablet-mobile-drawer
+  .ant-menu-submenu.ant-menu-submenu-vertical.ant-menu-submenu-active {
+  text-align: end;
+}

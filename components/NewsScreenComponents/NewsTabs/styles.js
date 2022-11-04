@@ -38,4 +38,12 @@ export const StyledNewsContainer = styled.div`
   grid-template-columns: calc(75% - 4rem) 25%;
   margin-top: 2rem;
   grid-gap: 4rem;
+
+  @media only screen and (max-width: 106.25em) {
+    grid-template-columns: calc(70% - 4rem) 30%;
+  }
+
+  @media only screen and (max-width: 68.75em) {
+    grid-template-columns: calc(65% - 4rem) 35%;
+  }
 `;

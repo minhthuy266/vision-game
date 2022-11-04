@@ -22,10 +22,22 @@ export const StyledBody = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 2rem;
+
+  div {
+    height: 8rem;
+  }
+
+  @media only screen and (max-width: 93.75em) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media only screen and (max-width: 56.25em) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 export const StyledItemList = styled.div`
-  padding: 1.6rem;
+  padding: 0 1.2rem;
   background: #ffffff;
   border-radius: 8px;
   display: flex;
@@ -43,4 +55,11 @@ export const StyledItemList = styled.div`
   background: ${(props) => (props.active ? "rgba(35, 168, 245, 0.06)" : "")};
 
   color: ${(props) => (props.active ? "#23A8F5" : "#000")};
+
+  /* span svg {
+    
+    @media only screen and (max-width: 93.75em) {
+      transform: scale(0.8);
+    }
+  } */
 `;

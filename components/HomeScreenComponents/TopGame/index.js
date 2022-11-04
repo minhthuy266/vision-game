@@ -59,10 +59,27 @@ const TopGame = () => {
         <HeaderSection href="/" title="Game Hot" />
         <Swiper
           spaceBetween={20}
-          slidesPerView={3}
-          slidesPerGroup={3}
+          slidesPerView={1}
           loop={true}
           loopFillGroupWithBlank={true}
+          breakpoints={{
+            "@0.00": {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            "@0.75": {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            "@1.00": {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            "@1.50": {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+          }}
           pagination={{
             clickable: true,
           }}

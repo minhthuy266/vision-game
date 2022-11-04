@@ -18,6 +18,18 @@ export const HeaderContainer = styled.div`
     padding: 0 calc((100vw - 1440px) / 2);
   }
 
+  @media only screen and (max-width: 93.75em) {
+    padding: 0 8vw;
+  }
+
+  @media only screen and (max-width: 75em) {
+    padding: 0 6vw;
+  }
+
+  @media only screen and (max-width: 62.5em) {
+    padding: 0 4vw;
+  }
+
   .ant-menu-horizontal {
     border-bottom: 1px solid transparent;
   }
@@ -41,6 +53,12 @@ export const HeaderContainer = styled.div`
 
     li:nth-child(7) {
       margin-left: 3rem;
+    }
+  }
+
+  .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item {
+    @media only screen and (max-width: 68.75em) {
+      padding: 0 16px;
     }
   }
 
@@ -138,9 +156,66 @@ export const HeaderContainer = styled.div`
   }
 `;
 
+export const StyledNavItem = styled.div`
+  display: flex;
+  align-items: center;
+
+  border-bottom: ${(props) =>
+    props.active
+      ? " 2px solid #23A8F5"
+      : " 1px solid rgba(186, 186, 187, 0.4)"};
+`;
+
 export const StyledLoginBtn = styled.div`
   .ant-btn {
     background: ${(props) =>
       props.isLoginScreen ? "rgba(35, 168, 245, 0.2)" : ""};
+  }
+`;
+
+export const StyledMenuTabletMobile = styled.div`
+  @media only screen and (min-width: 56.3125em) {
+    display: none;
+  }
+
+  .ant-btn {
+    background: transparent;
+    border: 1px solid transparent;
+
+    span {
+      color: #000;
+    }
+  }
+
+  .ant-btn-primary {
+    box-shadow: none;
+  }
+
+  .ant-drawer-header {
+    border-bottom: 1px solid transparent;
+  }
+
+  .ant-menu-vertical .ant-menu-item,
+  .ant-menu-vertical-left .ant-menu-item {
+    justify-content: flex-end;
+    display: flex;
+  }
+
+  .ant-drawer-header-title {
+    display: flex;
+    justify-content: flex-end;
+  }
+`;
+
+export const StyledMenuDesktop = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 56.25em) {
+    position: absolute;
+    z-index: -1000;
+    opacity: 0;
   }
 `;

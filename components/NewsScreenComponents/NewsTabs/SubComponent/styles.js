@@ -23,6 +23,12 @@ export const StyledNewsItem = styled.div`
     height: 25rem;
     width: 35rem;
     object-fit: cover;
+    border-radius: 12px;
+
+    @media only screen and (max-width: 81.25em) {
+      height: 22rem;
+      width: 30rem;
+    }
   }
 `;
 

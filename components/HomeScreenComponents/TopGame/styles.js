@@ -7,6 +7,18 @@ export const StyledWrapper = styled.div`
   @media only screen and (min-width: 120.0625em) {
     padding: 0 calc((100vw - 1440px) / 2);
   }
+
+  @media only screen and (max-width: 93.75em) {
+    padding: 0 8vw;
+  }
+
+  @media only screen and (max-width: 75em) {
+    padding: 0 6vw;
+  }
+
+  @media only screen and (max-width: 62.5em) {
+    padding: 0 4vw;
+  }
 `;
 
 export const StyledSectionWrapper = styled.div`

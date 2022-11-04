@@ -11,4 +11,14 @@ export const StyledList = styled.div`
   display: grid;
   grid-template-columns: repeat(6, calc((100% - 20rem) / 6));
   grid-gap: 4rem;
+
+  @media only screen and (max-width: 56.25em) {
+    grid-template-columns: repeat(5, calc((100% - 16rem) / 5));
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;

@@ -20,7 +20,9 @@ export const StyledTopNews = styled.div`
 
   img {
     width: 100%;
-    object-fit: fill;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
   }
 `;
 

@@ -4,11 +4,17 @@ import styled from "styled-components";
 export const TopBannerContainer = styled.div`
   margin-top: 80px;
   padding: 0;
+  position: relative;
 
   img {
     width: 100vw;
-    height: auto;
+    height: 100vh;
     margin-top: -6rem;
+    object-fit: cover;
+
+    @media only screen and (max-width: 56.25em) {
+      height: 70vh;
+    }
   }
 `;
 
@@ -16,7 +22,11 @@ export const StyledBtnWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, 0);
   position: absolute;
-  bottom: 60px;
+  bottom: 4vh;
+
+  @media only screen and (max-width: 106.25em) {
+    grid-template-columns: calc(70% - 4rem) 30%;
+  }
 `;
 
 export const StyledBtn = styled(Button)`

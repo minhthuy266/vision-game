@@ -1,5 +1,4 @@
-import { MenuOutlined } from "@ant-design/icons";
-import { Button, Drawer, Menu } from "antd";
+import { Button, Menu, Drawer } from "antd";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +11,7 @@ import {
   StyledLoginBtn,
   StyledMenuDesktop,
   StyledMenuTabletMobile,
+  StyledNavItem,
 } from "./styles";
 
 const Header = () => {
@@ -106,12 +106,11 @@ const Header = () => {
     },
   ];
 
-  const [open, setOpen] = useState(false);
-
   const onClick = (e) => {
     setCurrent(e.key);
-    setOpen(false);
   };
+
+  const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -129,16 +128,10 @@ const Header = () => {
 
       <StyledMenuTabletMobile>
         <Button type="primary" onClick={showDrawer}>
-          <MenuOutlined style={{ fontSize: "26px" }} />
+          Open
         </Button>
 
-        <Drawer
-          placement="right"
-          onClose={onClose}
-          open={open}
-          width={320}
-          className="tablet-mobile-drawer"
-        >
+        <Drawer placement="right" onClose={onClose} open={open}>
           <Menu
             onClick={onClick}
             selectedKeys={[current]}
@@ -149,12 +142,24 @@ const Header = () => {
       </StyledMenuTabletMobile>
 
       <StyledMenuDesktop>
+        {items.map((el) => {
+          return (
+            <StyledNavItem
+              key={el.label}
+              onClick={() => setActive(el.key)}
+              active={el.key === active}
+            >
+              &nbsp; {el.label}
+            </StyledNavItem>
+          );
+        })}
+        {/* 
         <Menu
           onClick={onClick}
           selectedKeys={[current]}
           mode="horizontal"
           items={items}
-        />
+        /> */}
       </StyledMenuDesktop>
     </HeaderContainer>
   );
