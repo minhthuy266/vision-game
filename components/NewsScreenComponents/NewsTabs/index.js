@@ -1,7 +1,7 @@
 import { Tabs } from "antd";
-import { StyledWrapper } from "styles/styles";
+
 import MainNewsComponent from "./MainNewsComponent";
-import { StyledTabsWrapper } from "./styles";
+import { StyledTabsWrapper, StyledWrapper } from "./styles";
 
 const NewsTabs = () => {
   const onChange = (key) => {

@@ -17,6 +17,7 @@ import {
   StyledNewsList,
   StyledSectionWrapper,
   StyledTopNews,
+  StyledTopNewsExcerpt,
   StyledTopNewsTitle,
 } from "./styles";
 
@@ -110,12 +111,12 @@ const HomeNews = () => {
             </StyledTopNewsTitle>
 
             <div>
-              <div>
+              <StyledTopNewsExcerpt>
                 Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
                 Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
                 Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
                 tướng siêu hiếm trong dịp đặc biệt này.
-              </div>
+              </StyledTopNewsExcerpt>
             </div>
           </div>
         </StyledTopNews>

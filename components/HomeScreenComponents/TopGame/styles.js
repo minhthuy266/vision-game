@@ -19,6 +19,10 @@ export const StyledWrapper = styled.div`
   @media only screen and (max-width: 62.5em) {
     padding: 0 4vw;
   }
+
+  @media only screen and (max-width: 28.125em) {
+    padding: 0 2vw;
+  }
 `;
 
 export const StyledSectionWrapper = styled.div`
@@ -27,6 +31,10 @@ export const StyledSectionWrapper = styled.div`
   border-radius: 12px;
   margin-top: 1rem;
   padding: 2rem 4rem;
+
+  @media only screen and (max-width: 31.25em) {
+    padding: 2rem;
+  }
 
   img {
     border-radius: 12px;

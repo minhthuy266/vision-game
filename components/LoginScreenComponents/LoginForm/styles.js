@@ -18,6 +18,10 @@ export const LoginFormContainer = styled.div`
   @media only screen and (max-width: 62.5em) {
     padding: 0 4vw;
   }
+
+  @media only screen and (max-width: 28.125em) {
+    padding: 0 2vw;
+  }
 `;
 
 export const LoginFormWrapper = styled.div`

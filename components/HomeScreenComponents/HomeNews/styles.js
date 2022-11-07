@@ -5,6 +5,10 @@ export const StyledSectionWrapper = styled.div`
   box-shadow: 4px 4px 16px rgba(23, 25, 26, 0.16);
   border-radius: 12px;
   padding: 2rem 4rem;
+
+  @media only screen and (max-width: 31.25em) {
+    padding: 2rem;
+  }
 `;
 
 export const StyledTopNews = styled.div`
@@ -20,7 +24,7 @@ export const StyledTopNews = styled.div`
 
   img {
     width: 100%;
-    height: 100%;
+    height: 31rem;
     object-fit: cover;
     border-radius: 12px;
   }
@@ -35,6 +39,19 @@ export const StyledTopNewsTitle = styled.div`
   font-size: 3.2rem;
   line-height: 4rem;
   margin-bottom: 2rem;
+  display: -webkit-box;
+  overflow-y: hidden;
+  -webkit-line-clamp: 3;
+  -moz-box-orient: vertical;
+  word-break: break-word;
+`;
+
+export const StyledTopNewsExcerpt = styled.div`
+  display: -webkit-box;
+  overflow-y: hidden;
+  -webkit-line-clamp: 5;
+  -moz-box-orient: vertical;
+  word-break: break-word;
 `;
 
 export const StyledNewsList = styled.div`
@@ -42,6 +59,14 @@ export const StyledNewsList = styled.div`
   grid-template-columns: repeat(4, calc((100% - 6rem) / 4));
   grid-gap: 2rem;
   margin-bottom: 2rem;
+
+  @media only screen and (max-width: 56.25em) {
+    grid-template-columns: repeat(3, calc((100% - 6rem) / 3));
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    grid-template-columns: repeat(2, calc((100% - 2rem) / 2));
+  }
 
   img {
     width: 100%;

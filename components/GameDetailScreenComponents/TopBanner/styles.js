@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledTopBannerContainer = styled.div`
   img.banner-img {
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
     cursor: pointer;
     width: 100vw;
     height: 50vh;
@@ -19,20 +19,37 @@ export const StyledGroupBtn = styled.div`
   position: absolute;
   bottom: 5rem;
   left: 19rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 2rem;
+
+  @media only screen and (max-width: 56.25em) {
+    left: 22rem;
+  }
+
+  @media only screen and (max-width: 46.875em) {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  @media only screen and (max-width: 31.25em) {
+    bottom: -16rem;
+    left: 0;
+  }
 
   img {
-    margin-right: 2rem;
     cursor: pointer;
   }
 
   .ant-btn {
-    margin-right: 2rem;
     background: #23a8f5;
     border-radius: 8px;
     border-color: #23a8f5;
-    height: 4rem;
-    width: 13rem;
+    height: 40px;
+    width: 130px;
+
+    @media only screen and (max-width: 46.875em) {
+      margin-right: 0;
+    }
 
     span {
       font-weight: 600;

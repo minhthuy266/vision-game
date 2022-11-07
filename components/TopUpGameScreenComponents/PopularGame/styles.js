@@ -14,7 +14,10 @@ export const StyledSectionWrapper = styled.div`
   box-shadow: 4px 4px 16px rgba(23, 25, 26, 0.16);
   border-radius: 12px;
   margin-top: 1rem;
-  padding: 2rem 4rem;
+
+  @media only screen and (max-width: 31.25em) {
+    padding: 2rem;
+  }
 `;
 
 export const StyledBody = styled.div`
@@ -25,6 +28,14 @@ export const StyledBody = styled.div`
 
   @media only screen and (max-width: 56.25em) {
     grid-template-columns: repeat(5, calc((100% - 16rem) / 5));
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    grid-template-columns: repeat(4, calc((100% - 12rem) / 4));
+  }
+
+  @media only screen and (max-width: 31.25em) {
+    grid-template-columns: repeat(3, calc((100% - 8rem) / 3));
   }
 
   img {

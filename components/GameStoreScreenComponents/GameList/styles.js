@@ -6,6 +6,12 @@ export const StyledTabsWrapper = styled.div`
     margin: 0 auto;
   }
 
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
+  .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
+    white-space: initial;
+    flex-wrap: wrap;
+  }
+
   .ant-tabs-tab {
     font-weight: 700;
     font-size: 2.1rem;
@@ -23,6 +29,10 @@ export const StyledTabsWrapper = styled.div`
   .ant-tabs-bottom > div > .ant-tabs-nav::before {
     border-bottom: 1px solid transparent;
   }
+
+  .ant-tabs-tab-btn {
+    text-align: center;
+  }
 `;
 
 export const StyledSectionWrapper = styled.div`
@@ -31,6 +41,10 @@ export const StyledSectionWrapper = styled.div`
   border-radius: 12px;
   margin-top: 1rem;
   padding: 2rem 4rem;
+
+  @media only screen and (max-width: 31.25em) {
+    padding: 2rem;
+  }
 
   img {
     border-radius: 12px;
@@ -66,5 +80,13 @@ export const StyledBody = styled.div`
 
   @media only screen and (max-width: 56.25em) {
     grid-template-columns: repeat(5, calc((100% - 16rem) / 5));
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    grid-template-columns: repeat(4, calc((100% - 12rem) / 4));
+  }
+
+  @media only screen and (max-width: 31.25em) {
+    grid-template-columns: repeat(3, calc((100% - 8rem) / 3));
   }
 `;

@@ -13,7 +13,7 @@ class MyDocument extends Document {
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
-            crossOrigin={true}
+            cross-origin={true}
           />
           <link
             href="https://fonts.googleapis.com/css2?family=Mulish:wght@600;700&display=swap"

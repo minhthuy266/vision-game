@@ -1,5 +1,30 @@
 import styled from "styled-components";
 
+export const StyledWrapper = styled.div`
+  padding: 0 12.5vw;
+  margin-bottom: 4rem;
+
+  @media only screen and (min-width: 120.0625em) {
+    padding: 0 calc((100vw - 1440px) / 2);
+  }
+
+  @media only screen and (max-width: 93.75em) {
+    padding: 0 8vw;
+  }
+
+  @media only screen and (max-width: 75em) {
+    padding: 0 6vw;
+  }
+
+  @media only screen and (max-width: 62.5em) {
+    padding: 0 4vw;
+  }
+
+  @media only screen and (max-width: 28.125em) {
+    padding: 0;
+  }
+`;
+
 export const StyledTabsWrapper = styled.div`
   background: #ffffff;
   box-shadow: 4px 4px 16px rgba(23, 25, 26, 0.16);
@@ -7,6 +32,10 @@ export const StyledTabsWrapper = styled.div`
   margin-top: 1rem;
   padding: 2rem 4rem;
   margin-top: 60vh;
+
+  @media only screen and (max-width: 31.25em) {
+    padding: 2rem;
+  }
 
   .ant-tabs-nav-wrap {
     display: flex;
@@ -21,6 +50,10 @@ export const StyledTabsWrapper = styled.div`
 
   .ant-tabs-tab + .ant-tabs-tab {
     margin: 0 0 0 6rem;
+
+    @media only screen and (max-width: 34.375em) {
+      margin: 0 0 0 3rem;
+    }
   }
 
   .ant-tabs-top > .ant-tabs-nav::before,
@@ -45,5 +78,14 @@ export const StyledNewsContainer = styled.div`
 
   @media only screen and (max-width: 68.75em) {
     grid-template-columns: calc(65% - 4rem) 35%;
+  }
+
+  @media only screen and (max-width: 43.75em) {
+    grid-template-columns: calc(55% - 4rem) 45%;
+  }
+
+  @media only screen and (max-width: 28.125em) {
+    grid-template-columns: calc(50% - 3rem) 50%;
+    grid-gap: 3rem;
   }
 `;

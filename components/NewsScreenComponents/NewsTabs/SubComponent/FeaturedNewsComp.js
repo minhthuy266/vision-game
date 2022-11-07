@@ -14,7 +14,7 @@ const FeaturedNewsComp = () => {
   return (
     <FeaturedNewsContainer>
       <StyledHeader style={{ marginBottom: "0" }}>
-        <SpeakerIcon /> &nbsp; Tin tức xem nhiều nhất
+        <SpeakerIcon /> Tin tức xem nhiều nhất
       </StyledHeader>
 
       <StyledBodyFeaturedNewsList>

@@ -30,19 +30,7 @@ export const StyledBody = styled.div`
   }
 
   .ant-form-inline .ant-form-item {
-    margin-right: 4rem;
-
-    @media only screen and (max-width: 106.25em) {
-      margin-right: 2rem;
-    }
-
-    @media only screen and (max-width: 93.75em) {
-      margin-right: 1rem;
-    }
-
-    @media only screen and (max-width: 68.75em) {
-      margin-right: 0;
-    }
+    margin-right: 0;
   }
 
   .ant-col {
@@ -63,8 +51,12 @@ export const StyledBody = styled.div`
       width: 95%;
     }
 
-    @media only screen and (max-width: 68.75em) {
+    @media only screen and (max-width: 75em) {
       width: 92%;
+    }
+
+    @media only screen and (max-width: 75em) {
+      width: 100%;
     }
   }
 

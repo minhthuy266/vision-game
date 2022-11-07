@@ -30,6 +30,10 @@ export const HeaderContainer = styled.div`
     padding: 0 4vw;
   }
 
+  @media only screen and (max-width: 28.125em) {
+    padding: 0 2vw;
+  }
+
   .ant-menu-horizontal {
     border-bottom: 1px solid transparent;
   }

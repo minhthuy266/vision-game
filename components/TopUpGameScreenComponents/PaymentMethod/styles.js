@@ -6,6 +6,10 @@ export const StyledSectionWrapper = styled.div`
   border-radius: 12px;
   margin-top: 1rem;
   padding: 2rem 4rem;
+
+  @media only screen and (max-width: 31.25em) {
+    padding: 2rem;
+  }
 `;
 
 export const StyledHeader = styled.div`
@@ -25,17 +29,34 @@ export const StyledBody = styled.div`
     font-weight: 700;
     font-size: 1.6rem;
     line-height: 2rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+
+  .ant-radio-wrapper {
+    margin-bottom: 3rem;
   }
 `;
 
 export const StyledWalletGroup = styled.div`
-  margin-top: 4rem;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 2rem;
 
+  @media only screen and (max-width: 75em) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
   @media only screen and (max-width: 56.25em) {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media only screen and (max-width: 31.25em) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   img {
