@@ -33,6 +33,17 @@ export const StyledTabsWrapper = styled.div`
   padding: 2rem 4rem;
   margin-top: 60vh;
 
+  @media only screen and (max-width: 30em) {
+    .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
+    .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
+      white-space: unset;
+    }
+
+    .ant-tabs-tab-btn {
+      text-align: center;
+    }
+  }
+
   @media only screen and (max-width: 31.25em) {
     padding: 2rem;
   }

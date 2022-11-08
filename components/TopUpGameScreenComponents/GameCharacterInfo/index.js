@@ -1,4 +1,4 @@
-import { Button, Col, Form, Input } from "antd";
+import { Button, Col, Form, Input, Select } from "antd";
 import GameCharacterInfoIcon from "public/assets/icons/GameCharacterInfoIcon";
 import { StyledBody, StyledWrapper } from "styles/styles";
 import {
@@ -33,7 +33,9 @@ const GameCharacterInfo = () => {
           >
             <StyledFormWrapper>
               <Form.Item label="Server" name="server">
-                <Input placeholder="Chọn Server" />
+                <Select placeholder="Chọn server">
+                  <Select.Option value="demo">Demo</Select.Option>
+                </Select>
               </Form.Item>
 
               <Form.Item label="ID tài khoản" name="accountId">

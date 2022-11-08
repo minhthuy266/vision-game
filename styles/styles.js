@@ -33,6 +33,13 @@ export const StyledBody = styled.div`
     margin-right: 0;
   }
 
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    height: 4.4rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+  }
+
   .ant-col {
     display: flex;
     flex-flow: column;
