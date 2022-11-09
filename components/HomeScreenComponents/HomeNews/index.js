@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import NewsItem1 from "public/assets/images/HomeScreen_NewsItem1.png";
 import NewsItem2 from "public/assets/images/HomeScreen_NewsItem2.png";
 import NewsItem3 from "public/assets/images/HomeScreen_NewsItem3.png";
@@ -100,39 +101,44 @@ const HomeNews = () => {
     <StyledWrapper>
       <StyledSectionWrapper>
         <HeaderSection href="/" title="Tin tức - Sự kiện" />
-        <StyledTopNews>
-          <div>
-            <Image src={NewsItem1} alt="News Item 1" />
-          </div>
-
-          <div>
-            <StyledTopNewsTitle>
-              Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt Nam!
-            </StyledTopNewsTitle>
+        <Link href="/news/news-detail">
+          <StyledTopNews>
+            <div>
+              <Image src={NewsItem1} alt="News Item 1" />
+            </div>
 
             <div>
-              <StyledTopNewsExcerpt>
-                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
-                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
-                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
-                tướng siêu hiếm trong dịp đặc biệt này.
-              </StyledTopNewsExcerpt>
+              <StyledTopNewsTitle>
+                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
+                Nam!
+              </StyledTopNewsTitle>
+
+              <div>
+                <StyledTopNewsExcerpt>
+                  Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên
+                  Minh Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên
+                  Minh Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những
+                  skin tướng siêu hiếm trong dịp đặc biệt này.
+                </StyledTopNewsExcerpt>
+              </div>
             </div>
-          </div>
-        </StyledTopNews>
+          </StyledTopNews>
+        </Link>
 
         <StyledNewsList>
           {newsList.map((el) => {
             return (
               <div key={el.id}>
-                <div>
-                  <Image src={el.img} alt={el.name} />
-                </div>
+                <Link href="/news/news-detail">
+                  <div>
+                    <Image src={el.img} alt={el.name} />
+                  </div>
 
-                <StyledCardBody>
-                  <StyledCardBodyDate>15/08/2022 23:59</StyledCardBodyDate>
-                  <StyledCardBodyTitle>{el.title}</StyledCardBodyTitle>
-                </StyledCardBody>
+                  <StyledCardBody>
+                    <StyledCardBodyDate>15/08/2022 23:59</StyledCardBodyDate>
+                    <StyledCardBodyTitle>{el.title}</StyledCardBodyTitle>
+                  </StyledCardBody>
+                </Link>
               </div>
             );
           })}

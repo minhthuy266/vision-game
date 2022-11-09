@@ -9,6 +9,7 @@ import {
   StyledHeader,
 } from "./styles";
 import FeaturedNews from "public/assets/images/NewsScreen_FeaturedNewsItem1.png";
+import Link from "next/link";
 
 const FeaturedNewsComp = () => {
   return (
@@ -17,75 +18,85 @@ const FeaturedNewsComp = () => {
         <SpeakerIcon /> Tin tức xem nhiều nhất
       </StyledHeader>
 
-      <StyledBodyFeaturedNewsList>
-        <div>
-          <Image src={FeaturedNews} alt="Featured News" />
-        </div>
+      <Link href="/news/news-detail">
+        <StyledBodyFeaturedNewsList>
+          <div>
+            <Image src={FeaturedNews} alt="Featured News" />
+          </div>
 
-        <StyledFeaturedNewsItemDate>
-          15/08/2022 16:40
-        </StyledFeaturedNewsItemDate>
+          <StyledFeaturedNewsItemDate>
+            15/08/2022 16:40
+          </StyledFeaturedNewsItemDate>
 
-        <StyledFeaturedNewsItemTitle>
-          Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
-        </StyledFeaturedNewsItemTitle>
-      </StyledBodyFeaturedNewsList>
+          <StyledFeaturedNewsItemTitle>
+            Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
+          </StyledFeaturedNewsItemTitle>
+        </StyledBodyFeaturedNewsList>
+      </Link>
 
-      <StyledBodyFeaturedNewsList>
-        <div>
-          <Image src={FeaturedNews} alt="Featured News" />
-        </div>
+      <Link href="/news/news-detail">
+        <StyledBodyFeaturedNewsList>
+          <div>
+            <Image src={FeaturedNews} alt="Featured News" />
+          </div>
 
-        <StyledFeaturedNewsItemDate>
-          15/08/2022 16:40
-        </StyledFeaturedNewsItemDate>
+          <StyledFeaturedNewsItemDate>
+            15/08/2022 16:40
+          </StyledFeaturedNewsItemDate>
 
-        <StyledFeaturedNewsItemTitle>
-          Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
-        </StyledFeaturedNewsItemTitle>
-      </StyledBodyFeaturedNewsList>
+          <StyledFeaturedNewsItemTitle>
+            Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
+          </StyledFeaturedNewsItemTitle>
+        </StyledBodyFeaturedNewsList>
+      </Link>
 
-      <StyledBodyFeaturedNewsList>
-        <div>
-          <Image src={FeaturedNews} alt="Featured News" />
-        </div>
+      <Link href="/news/news-detail">
+        <StyledBodyFeaturedNewsList>
+          <div>
+            <Image src={FeaturedNews} alt="Featured News" />
+          </div>
 
-        <StyledFeaturedNewsItemDate>
-          15/08/2022 16:40
-        </StyledFeaturedNewsItemDate>
+          <StyledFeaturedNewsItemDate>
+            15/08/2022 16:40
+          </StyledFeaturedNewsItemDate>
 
-        <StyledFeaturedNewsItemTitle>
-          Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
-        </StyledFeaturedNewsItemTitle>
-      </StyledBodyFeaturedNewsList>
+          <StyledFeaturedNewsItemTitle>
+            Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
+          </StyledFeaturedNewsItemTitle>
+        </StyledBodyFeaturedNewsList>
+      </Link>
 
-      <StyledBodyFeaturedNewsList>
-        <div>
-          <Image src={FeaturedNews} alt="Featured News" />
-        </div>
+      <Link href="/news/news-detail">
+        <StyledBodyFeaturedNewsList>
+          <div>
+            <Image src={FeaturedNews} alt="Featured News" />
+          </div>
 
-        <StyledFeaturedNewsItemDate>
-          15/08/2022 16:40
-        </StyledFeaturedNewsItemDate>
+          <StyledFeaturedNewsItemDate>
+            15/08/2022 16:40
+          </StyledFeaturedNewsItemDate>
 
-        <StyledFeaturedNewsItemTitle>
-          Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
-        </StyledFeaturedNewsItemTitle>
-      </StyledBodyFeaturedNewsList>
+          <StyledFeaturedNewsItemTitle>
+            Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
+          </StyledFeaturedNewsItemTitle>
+        </StyledBodyFeaturedNewsList>
+      </Link>
 
-      <StyledBodyFeaturedNewsList>
-        <div>
-          <Image src={FeaturedNews} alt="Featured News" />
-        </div>
+      <Link href="/news/news-detail">
+        <StyledBodyFeaturedNewsList>
+          <div>
+            <Image src={FeaturedNews} alt="Featured News" />
+          </div>
 
-        <StyledFeaturedNewsItemDate>
-          15/08/2022 16:40
-        </StyledFeaturedNewsItemDate>
+          <StyledFeaturedNewsItemDate>
+            15/08/2022 16:40
+          </StyledFeaturedNewsItemDate>
 
-        <StyledFeaturedNewsItemTitle>
-          Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
-        </StyledFeaturedNewsItemTitle>
-      </StyledBodyFeaturedNewsList>
+          <StyledFeaturedNewsItemTitle>
+            Tất tần tật những bất ngờ hấp dẫn trong chuỗi sự kiện RiotX Arcane
+          </StyledFeaturedNewsItemTitle>
+        </StyledBodyFeaturedNewsList>
+      </Link>
     </FeaturedNewsContainer>
   );
 };

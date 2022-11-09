@@ -17,6 +17,10 @@ export const StyledHeader = styled.div`
   color: #17191a;
   border-bottom: 1px solid rgba(186, 186, 187, 0.4);
   padding-bottom: 2rem;
+
+  @media only screen and (max-width: 31.25em) {
+    padding-left: 0;
+  }
 `;
 
 export const StyledBody = styled.div`
@@ -24,6 +28,19 @@ export const StyledBody = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   padding: 0 8rem;
+  grid-gap: 2rem;
+
+  @media only screen and (max-width: 75em) {
+    padding: 0 3rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    grid-template-columns: 1fr;
+  }
+
+  @media only screen and (max-width: 31.25em) {
+    padding: 0;
+  }
 
   .ant-table-thead {
     display: none;
@@ -38,7 +55,7 @@ export const StyledBody = styled.div`
   .ant-table tfoot > tr > th,
   .ant-table tfoot > tr > td {
     position: relative;
-    padding: 0 16px;
+    padding: 0;
     overflow-wrap: break-word;
     padding-bottom: 1.2rem;
   }

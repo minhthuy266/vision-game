@@ -12,6 +12,7 @@ import GameItem3 from "public/assets/images/HomeScreen_ListGame_Item3.png";
 import GameItem4 from "public/assets/images/HomeScreen_ListGame_Item4.png";
 import GameItem5 from "public/assets/images/HomeScreen_ListGame_Item5.png";
 import GameItem6 from "public/assets/images/HomeScreen_ListGame_Item6.png";
+import Link from "next/link";
 
 const PopularGame = () => {
   const gameList = [
@@ -63,11 +64,13 @@ const PopularGame = () => {
           {gameList.map((el) => {
             return (
               <div key={el.id}>
-                <div>
-                  <Image src={el.img} alt={el.name} />
-                </div>
+                <Link href="/game/vinh-hang-ky-nguyen">
+                  <div>
+                    <Image src={el.img} alt={el.name} />
+                  </div>
 
-                <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+                  <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+                </Link>
               </div>
             );
           })}

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledMainContentWrapper = styled.div`
-  margin-top: 10rem;
+  margin-top: 100px;
 `;
 
 export const StyledMainContentTitle = styled.div`

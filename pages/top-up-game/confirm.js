@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { StyledWrapper } from "styles/styles";
 
 const StyledConfirmScreen = styled.div`
-  margin-top: 10rem;
+  margin-top: 100px;
 `;
 
 const ConfirmScreen = () => {

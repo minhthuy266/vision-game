@@ -15,6 +15,10 @@ export const TopBannerContainer = styled.div`
     @media only screen and (max-width: 56.25em) {
       height: 70vh;
     }
+
+    @media only screen and (min-width: 120em) {
+      margin-top: 0;
+    }
   }
 `;
 
