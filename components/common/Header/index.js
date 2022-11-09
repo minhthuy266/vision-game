@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import UserHeader from "public/assets/icons/UserHeader";
 import VisionLogo from "public/assets/icons/VisionLogo";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import {
   HeaderContainer,
   StyledLoginBtn,
@@ -19,17 +20,10 @@ const Header = () => {
   const [current, setCurrent] = useState(router.pathname);
   const [active, setActive] = useState("5");
   const [isLoginScreen, setIsLoginScreen] = useState(false);
-  const { data: session, status } = useSession();
-  const { push, asPath, pathname } = useRouter();
 
-  const handleSignIn = () => {
-    setIsLoginScreen(true);
-    setCurrent(null);
+  const { pathname } = useRouter();
 
-    pathname.includes("/auth/login")
-      ? console.log("object")
-      : push(`/auth/login?callbackUrl=${asPath}`);
-  };
+  const { userInfo } = useSelector((state) => state.user);
 
   useEffect(() => {
     pathname.includes("/auth/login")
@@ -66,28 +60,28 @@ const Header = () => {
     },
 
     {
-      label: session ? (
+      label: userInfo ? (
         <div>
           <Image
-            src={session.user.image}
+            src={userInfo.profilePhoto}
             alt="User Avatar"
             width={30}
             height={30}
             style={{ borderRadius: "50%" }}
           />{" "}
           &nbsp;
-          {session.user.name}
+          {userInfo.fullName}
         </div>
       ) : (
         <StyledLoginBtn isLoginScreen={isLoginScreen}>
-          <Button onClick={handleSignIn}>
+          <a href="https://auth.visionid.vn/authorize/game-portal-sandbox">
             <UserHeader /> &nbsp; Đăng nhập
-          </Button>
+          </a>
         </StyledLoginBtn>
       ),
-      danger: session ? false : true,
-      key: session ? "/auth/login" : null,
-      children: session
+      danger: userInfo ? false : true,
+      key: userInfo ? "/auth/login" : null,
+      children: userInfo
         ? [
             {
               label: "Hồ sơ cá nhân",
@@ -98,7 +92,11 @@ const Header = () => {
               key: "setting:2",
             },
             {
-              label: <div onClick={signOut}>Đăng xuất</div>,
+              label: (
+                <a href="https://auth.visionid.vn/logout/game-portal-sandbox">
+                  Đăng xuất
+                </a>
+              ),
               key: "setting:3",
             },
           ]
