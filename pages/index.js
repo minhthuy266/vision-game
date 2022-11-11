@@ -13,9 +13,22 @@ import { useEffect } from "react";
 export default function Home({ userInfo, isAuthed }) {
   const dispatch = useDispatch();
 
+  // console.log(userInfo);
+
+  // useEffect(() => {
+  //   dispatch(handleUserInfo(userInfo));
+  //   localStorage.setItem("isAuthed", isAuthed);
+  // }, []);
+
+  async function getUserInfor() {
+    const res = await fetch(`/api/auth/infor`);
+    const data = await res.json();
+    dispatch(handleUserInfo(data.data));
+  }
+
   useEffect(() => {
-    dispatch(handleUserInfo(userInfo));
-    localStorage.setItem("isAuthed", isAuthed);
+    getUserInfor();
+    return () => {};
   }, []);
 
   return (
@@ -28,30 +41,3 @@ export default function Home({ userInfo, isAuthed }) {
     </div>
   );
 }
-
-export const getServerSideProps = withSessionSsr(
-  async function getServerSideProps({ req }) {
-    const { access_token, refresh_token } = req.session.token;
-
-    const axiosInstance = axios.create({
-      baseURL: "https://api.visionid.vn",
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    });
-
-    const { data } = await axiosInstance.post(
-      "https://api.visionid.vn/api/vision-service/get-auth-info",
-      {
-        vision_token: md5(`${access_token}md5-vision-networko`),
-      }
-    );
-
-    return {
-      props: {
-        userInfo: data.data,
-        isAuthed: true,
-      },
-    };
-  }
-);

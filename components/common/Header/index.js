@@ -1,5 +1,6 @@
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer, Menu } from "antd";
+import axios from "axios";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,13 +26,17 @@ const Header = () => {
 
   const { userInfo } = useSelector((state) => state.user);
 
+  async function handleLogout() {
+    await axios.get("/api/logout");
+  }
+
   useEffect(() => {
     pathname.includes("/auth/login")
       ? setIsLoginScreen(true)
       : setIsLoginScreen(false);
   }, [pathname]);
 
-  const isAuthedStorage = JSON.parse(localStorage.getItem("isAuthed"));
+  // const isAuthedStorage = JSON.parse(localStorage.getItem("isAuthed"));
 
   const items = [
     {
@@ -96,7 +101,7 @@ const Header = () => {
             {
               label: (
                 <a
-                  onClick={() => localStorage.setItem("isAuthed", false)}
+                  onClick={handleLogout}
                   href="https://auth.visionid.vn/logout/game-portal-sandbox"
                 >
                   Đăng xuất
