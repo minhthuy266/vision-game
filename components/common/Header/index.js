@@ -31,6 +31,8 @@ const Header = () => {
       : setIsLoginScreen(false);
   }, [pathname]);
 
+  const isAuthedStorage = JSON.parse(localStorage.getItem("isAuthed"));
+
   const items = [
     {
       label: <Link href="/game-store">Kho Game</Link>,
@@ -93,7 +95,10 @@ const Header = () => {
             },
             {
               label: (
-                <a href="https://auth.visionid.vn/logout/game-portal-sandbox">
+                <a
+                  onClick={() => localStorage.setItem("isAuthed", false)}
+                  href="https://auth.visionid.vn/logout/game-portal-sandbox"
+                >
                   Đăng xuất
                 </a>
               ),

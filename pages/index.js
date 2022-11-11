@@ -10,11 +10,12 @@ import { useDispatch } from "react-redux";
 import { handleUserInfo } from "feature/user/userSlice";
 import { useEffect } from "react";
 
-export default function Home({ userInfo }) {
+export default function Home({ userInfo, isAuthed }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(handleUserInfo(userInfo));
+    localStorage.setItem("isAuthed", isAuthed);
   }, []);
 
   return (
@@ -42,13 +43,14 @@ export const getServerSideProps = withSessionSsr(
     const { data } = await axiosInstance.post(
       "https://api.visionid.vn/api/vision-service/get-auth-info",
       {
-        vision_token: md5(`${access_token}md5-vision-network`),
+        vision_token: md5(`${access_token}md5-vision-networko`),
       }
     );
 
     return {
       props: {
         userInfo: data.data,
+        isAuthed: true,
       },
     };
   }
