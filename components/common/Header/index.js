@@ -91,11 +91,11 @@ const Header = () => {
       children: userInfo
         ? [
             {
-              label: "Hồ sơ cá nhân",
+              label: <Link href="/profile">Hồ sơ cá nhân</Link>,
               key: "setting:1",
             },
             {
-              label: "Cài đặt và bảo mật",
+              label: <Link href="/settings">Cài đặt và bảo mật</Link>,
               key: "setting:2",
             },
             {
