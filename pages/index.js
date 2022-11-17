@@ -2,15 +2,12 @@ import GameList from "@/components/HomeScreenComponents/GameList";
 import HomeNews from "@/components/HomeScreenComponents/HomeNews";
 import MiniGame from "@/components/HomeScreenComponents/MiniGame";
 import TopGame from "@/components/HomeScreenComponents/TopGame";
-import { withSessionSsr } from "lib/withSession";
-import md5 from "md5";
-import TopBanner from "../components/HomeScreenComponents/TopBanner";
-import axios from "axios";
-import { useDispatch } from "react-redux";
 import { handleUserInfo } from "feature/user/userSlice";
-import { useEffect } from "react";
-import { getAuthInfor } from "api/modules/auth";
 import Cookies from "js-cookie";
+import { withSessionSsr } from "lib/withSession";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import TopBanner from "../components/HomeScreenComponents/TopBanner";
 
 export default function Home({ userInfo, isAuthed }) {
   const dispatch = useDispatch();

@@ -7,7 +7,11 @@ export function middleware(req, res) {
   let url = new URL(req.nextUrl);
   let pathname = url.pathname;
 
-  if (!verify && BLACK_LIST_ROUTE.includes(pathname)) {
+  const isAuthRoute = (pathname) => {
+    return pathname.startsWith("/api/auth");
+  };
+
+  if (!verify && BLACK_LIST_ROUTE.includes(pathname && isAuthRoute(pathname))) {
     return NextResponse.redirect(
       "https://auth.visionid.vn/authorize/game-portal-sandbox"
     );
