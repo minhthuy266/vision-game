@@ -30,6 +30,8 @@ function MyApp({ Component, pageProps, session }) {
     return null;
   }
 
+  console.log("page", pageProps);
+
   return (
     <SessionProvider session={session}>
       <Provider store={store}>
@@ -40,5 +42,40 @@ function MyApp({ Component, pageProps, session }) {
     </SessionProvider>
   );
 }
+
+// export function getInitialProps(context) {
+//   return withSessionSsr(async (context) => {
+//     const res = await fetch(`http://localhost:3000/api/auth/infor`, {
+//       headers: {
+//         cookie: context.req.headers.cookie,
+//       },
+//     });
+//     const data = await res.json();
+
+//     console.log("dyaaaaa", data);
+//     return {
+//       props: {
+//         userInfo: data.data || null,
+//       },
+//     };
+//   })(context);
+// }
+
+// MyApp.getInitialProps = async (ctx) => {
+//   const res = await fetch(`http://localhost:3000/api/auth/infor`, {
+//     headers: {
+//       cookie: context.req.headers.cookie,
+//     },
+//   });
+//   const data = await res.json();
+
+//   console.log("data", data);
+
+//   return {
+//     props: {
+//       userInfo: data.data || null,
+//     },
+//   };
+// };
 
 export default MyApp;

@@ -48,10 +48,10 @@ const Header = () => {
       key: "/top-up-game",
     },
 
-    {
-      label: <Link href="/subscription-fee">Gói Cước</Link>,
-      key: "/subscription-fee",
-    },
+    // {
+    //   label: <Link href="/subscription-fee">Gói Cước</Link>,
+    //   key: "/subscription-fee",
+    // },
     {
       label: <Link href="/news">Tin Tức</Link>,
       key: "/news",
@@ -61,57 +61,67 @@ const Header = () => {
       key: "/policy",
     },
 
-    {
-      label: <Link href="/contact">Liên hệ</Link>,
-      key: "/contact",
-    },
+    // {
+    //   label: <Link href="/contact">Liên hệ</Link>,
+    //   key: "/contact",
+    // },
 
-    {
-      label: userInfo ? (
-        <div>
-          <Image
-            src={userInfo.profilePhoto}
-            alt="User Avatar"
-            width={30}
-            height={30}
-            style={{ borderRadius: "50%" }}
-          />{" "}
-          &nbsp;
-          {userInfo.fullName}
-        </div>
-      ) : (
-        <StyledLoginBtn isLoginScreen={isLoginScreen}>
-          <a href="https://auth.visionid.vn/authorize/game-portal-sandbox">
-            <UserHeader /> &nbsp; Đăng nhập
-          </a>
-        </StyledLoginBtn>
-      ),
-      danger: userInfo ? false : true,
-      key: userInfo ? "/auth/login" : null,
-      children: userInfo
-        ? [
-            {
-              label: <Link href="/profile">Hồ sơ cá nhân</Link>,
-              key: "setting:1",
-            },
-            {
-              label: <Link href="/settings">Cài đặt và bảo mật</Link>,
-              key: "setting:2",
-            },
-            {
-              label: (
-                <a
-                  onClick={handleLogout}
-                  href="https://auth.visionid.vn/logout/game-portal-sandbox"
-                >
-                  Đăng xuất
-                </a>
-              ),
-              key: "setting:3",
-            },
-          ]
-        : [],
-    },
+    // {
+    //   label: (
+    //     <StyledLoginBtn isLoginScreen={isLoginScreen}>
+    //       {/* <a href="https://auth.visionid.vn/authorize/game-portal-sandbox"> */}
+    //       <UserHeader /> &nbsp; Đăng nhập
+    //       {/* </a> */}
+    //     </StyledLoginBtn>
+    //   ),
+    // },
+
+    // {
+    //   label: userInfo ? (
+    //     <div>
+    //       <Image
+    //         src={userInfo.profilePhoto}
+    //         alt="User Avatar"
+    //         width={30}
+    //         height={30}
+    //         style={{ borderRadius: "50%" }}
+    //       />{" "}
+    //       &nbsp;
+    //       {userInfo.fullName}
+    //     </div>
+    //   ) : (
+    //     <StyledLoginBtn isLoginScreen={isLoginScreen}>
+    //       <a href="https://auth.visionid.vn/authorize/game-portal-sandbox">
+    //         <UserHeader /> &nbsp; Đăng nhập
+    //       </a>
+    //     </StyledLoginBtn>
+    //   ),
+    //   danger: userInfo ? false : true,
+    //   key: userInfo ? "/auth/login" : null,
+    //   children: userInfo
+    //     ? [
+    //         {
+    //           label: <Link href="/profile">Hồ sơ cá nhân</Link>,
+    //           key: "setting:1",
+    //         },
+    //         {
+    //           label: <Link href="/settings">Cài đặt và bảo mật</Link>,
+    //           key: "setting:2",
+    //         },
+    //         {
+    //           label: (
+    //             <a
+    //               onClick={handleLogout}
+    //               href="https://auth.visionid.vn/logout/game-portal-sandbox"
+    //             >
+    //               Đăng xuất
+    //             </a>
+    //           ),
+    //           key: "setting:3",
+    //         },
+    //       ]
+    //     : [],
+    // },
   ];
 
   const [open, setOpen] = useState(false);
