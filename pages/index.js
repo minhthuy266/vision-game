@@ -12,17 +12,17 @@ import TopBanner from "../components/HomeScreenComponents/TopBanner";
 export default function Home({ userInfo, isAuthed }) {
   const dispatch = useDispatch();
 
-  async function getUserInfor() {
-    if (userInfo) {
-      dispatch(handleUserInfo(userInfo));
-      Cookies.set("isLogin", true);
-    }
-  }
+  // async function getUserInfor() {
+  //   if (userInfo) {
+  //     dispatch(handleUserInfo(userInfo));
+  //     Cookies.set("isLogin", true);
+  //   }
+  // }
 
-  useEffect(() => {
-    getUserInfor();
-    return () => {};
-  }, []);
+  // useEffect(() => {
+  //   getUserInfor();
+  //   return () => {};
+  // }, []);
 
   return (
     <div>
@@ -35,20 +35,20 @@ export default function Home({ userInfo, isAuthed }) {
   );
 }
 
-export function getServerSideProps(context) {
-  return withSessionSsr(async (context) => {
-    const res = await fetch(`${process.env.APP_URL}/api/auth/infor`, {
-      headers: {
-        cookie: context.req.headers.cookie,
-      },
-    });
+// export function getServerSideProps(context) {
+//   return withSessionSsr(async (context) => {
+//     const res = await fetch(`${process.env.APP_URL}/api/auth/infor`, {
+//       headers: {
+//         cookie: context.req.headers.cookie,
+//       },
+//     });
 
-    console.log("first", context);
-    const data = await res.json();
-    return {
-      props: {
-        userInfo: data.data || null,
-      },
-    };
-  })(context);
-}
+//     console.log("first", context);
+//     const data = await res.json();
+//     return {
+//       props: {
+//         userInfo: data.data || null,
+//       },
+//     };
+//   })(context);
+// }

@@ -33,13 +33,13 @@ function MyApp({ Component, pageProps, session }) {
   console.log("page", pageProps);
 
   return (
-    <SessionProvider session={session}>
-      <Provider store={store}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Provider>
-    </SessionProvider>
+    // <SessionProvider session={session}>
+    <Provider store={store}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
+    // </SessionProvider>
   );
 }
 
