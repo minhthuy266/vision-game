@@ -37,7 +37,7 @@ export default function Home({ userInfo, isAuthed }) {
 
 export function getServerSideProps(context) {
   return withSessionSsr(async (context) => {
-    const res = await fetch(`http://localhost:2000/api/auth/infor`, {
+    const res = await fetch(`${process.env.APP_URL}/api/auth/infor`, {
       headers: {
         cookie: context.req.headers.cookie,
       },

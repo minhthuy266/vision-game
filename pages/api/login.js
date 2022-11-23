@@ -8,5 +8,5 @@ export default withSessionRoute(async function routeLogin(req, res) {
     refresh_token: req.query.refresh_token,
   };
   await req.session.save();
-  res.redirect("http://localhost:2000");
+  res.redirect(`${process.env.APP_URL}`);
 });
