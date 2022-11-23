@@ -7,9 +7,9 @@ const TopBanner = () => {
     <TopBannerContainer>
       <Image src={Banner1} alt="Home Screen Banner 1" />
 
-      <StyledBtnWrapper>
+      {/* <StyledBtnWrapper>
         <StyledBtn>NẠP NGAY</StyledBtn>
-      </StyledBtnWrapper>
+      </StyledBtnWrapper> */}
     </TopBannerContainer>
   );
 };

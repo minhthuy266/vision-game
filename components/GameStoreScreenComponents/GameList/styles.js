@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const StyledTabsWrapper = styled.div`
+  .ant-tabs {
+    display: block;
+  }
+
   .ant-tabs > .ant-tabs-nav,
   .ant-tabs > div > .ant-tabs-nav {
     margin: 0 auto;
@@ -10,6 +14,8 @@ export const StyledTabsWrapper = styled.div`
   .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
     white-space: initial;
     flex-wrap: wrap;
+    display: flex !important;
+    justify-content: center !important;
   }
 
   .ant-tabs-tab {

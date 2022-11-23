@@ -5,6 +5,7 @@ import TopGame from "@/components/HomeScreenComponents/TopGame";
 import { handleUserInfo } from "feature/user/userSlice";
 import Cookies from "js-cookie";
 import { withSessionSsr } from "lib/withSession";
+import Head from "next/head";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import TopBanner from "../components/HomeScreenComponents/TopBanner";
@@ -25,13 +26,18 @@ export default function Home({ userInfo, isAuthed }) {
   // }, []);
 
   return (
-    <div>
-      <TopBanner />
-      <TopGame />
-      <MiniGame />
-      <GameList />
-      <HomeNews />
-    </div>
+    <>
+      <Head>
+        <title>Trang Chủ</title>
+      </Head>
+      <div>
+        <TopBanner />
+        <TopGame />
+        <MiniGame />
+        <GameList />
+        <HomeNews />
+      </div>
+    </>
   );
 }
 
