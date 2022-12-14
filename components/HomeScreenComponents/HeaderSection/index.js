@@ -13,8 +13,10 @@ const HeaderSection = ({ title, href, hasViewAllBtn }) => {
 
       <div>
         <Link href={href}>
-          Xem tất cả &nbsp;
-          <ExpandRight />{" "}
+          <>
+            Xem tất cả &nbsp;
+            <ExpandRight />{" "}
+          </>
         </Link>
       </div>
     </StyledHeader>

@@ -1,6 +1,7 @@
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer, Menu } from "antd";
 import axios from "axios";
+import md5 from "md5";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,7 @@ import UserHeader from "public/assets/icons/UserHeader";
 import VisionLogo from "public/assets/icons/VisionLogo";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import useSWR from "swr";
 import {
   HeaderContainer,
   StyledLoginBtn,
@@ -48,10 +50,10 @@ const Header = () => {
       key: "/top-up-game",
     },
 
-    // {
-    //   label: <Link href="/subscription-fee">Gói Cước</Link>,
-    //   key: "/subscription-fee",
-    // },
+    {
+      label: <Link href="/subscription-fee">Gói Cước</Link>,
+      key: "/subscription-fee",
+    },
     {
       label: <Link href="/news">Tin Tức</Link>,
       key: "/news",
@@ -61,10 +63,10 @@ const Header = () => {
       key: "/policy",
     },
 
-    // {
-    //   label: <Link href="/contact">Liên hệ</Link>,
-    //   key: "/contact",
-    // },
+    {
+      label: <Link href="/contact">Liên hệ</Link>,
+      key: "/contact",
+    },
 
     // {
     //   label: (
@@ -76,52 +78,52 @@ const Header = () => {
     //   ),
     // },
 
-    // {
-    //   label: userInfo ? (
-    //     <div>
-    //       <Image
-    //         src={userInfo.profilePhoto}
-    //         alt="User Avatar"
-    //         width={30}
-    //         height={30}
-    //         style={{ borderRadius: "50%" }}
-    //       />{" "}
-    //       &nbsp;
-    //       {userInfo.fullName}
-    //     </div>
-    //   ) : (
-    //     <StyledLoginBtn isLoginScreen={isLoginScreen}>
-    //       <a href="https://auth.visionid.vn/authorize/game-portal-sandbox">
-    //         <UserHeader /> &nbsp; Đăng nhập
-    //       </a>
-    //     </StyledLoginBtn>
-    //   ),
-    //   danger: userInfo ? false : true,
-    //   key: userInfo ? "/auth/login" : null,
-    //   children: userInfo
-    //     ? [
-    //         {
-    //           label: <Link href="/profile">Hồ sơ cá nhân</Link>,
-    //           key: "setting:1",
-    //         },
-    //         {
-    //           label: <Link href="/settings">Cài đặt và bảo mật</Link>,
-    //           key: "setting:2",
-    //         },
-    //         {
-    //           label: (
-    //             <a
-    //               onClick={handleLogout}
-    //               href="https://auth.visionid.vn/logout/game-portal-sandbox"
-    //             >
-    //               Đăng xuất
-    //             </a>
-    //           ),
-    //           key: "setting:3",
-    //         },
-    //       ]
-    //     : [],
-    // },
+    {
+      label: userInfo ? (
+        <div>
+          <Image
+            src={userInfo.profilePhoto}
+            alt="User Avatar"
+            width={30}
+            height={30}
+            style={{ borderRadius: "50%" }}
+          />{" "}
+          &nbsp;
+          {userInfo.fullName}
+        </div>
+      ) : (
+        <StyledLoginBtn isLoginScreen={isLoginScreen}>
+          <a href="https://auth.visionid.vn/authorize/game-portal-sandbox">
+            <UserHeader /> &nbsp; Đăng nhập
+          </a>
+        </StyledLoginBtn>
+      ),
+      danger: userInfo ? false : true,
+      key: userInfo ? "/auth/login" : null,
+      children: userInfo
+        ? [
+            {
+              label: <Link href="/profile">Hồ sơ cá nhân</Link>,
+              key: "setting:1",
+            },
+            {
+              label: <Link href="/settings">Cài đặt và bảo mật</Link>,
+              key: "setting:2",
+            },
+            {
+              label: (
+                <a
+                  onClick={handleLogout}
+                  href="https://auth.visionid.vn/logout/game-portal-sandbox"
+                >
+                  Đăng xuất
+                </a>
+              ),
+              key: "setting:3",
+            },
+          ]
+        : [],
+    },
   ];
 
   const [open, setOpen] = useState(false);
@@ -138,6 +140,33 @@ const Header = () => {
   const onClose = () => {
     setOpen(false);
   };
+
+  const fetcher = async (url) =>
+    await axios
+      .post(
+        url,
+        {
+          vision_token: md5(
+            `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjYyZDU5NDAwZTg4NDlhOWI5NDc4OTEwYiJ9LCJpYXQiOjE2Njk5NTQ0MDAsImV4cCI6MTY3MzU1NDQwMH0.yX84jr-bTYl6GZbEB5GDVtrRUzpAIA3m_BlCAXYRmpUmd5-vision-network`
+          ),
+        },
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjYyZDU5NDAwZTg4NDlhOWI5NDc4OTEwYiJ9LCJpYXQiOjE2Njk5NTQ0MDAsImV4cCI6MTY3MzU1NDQwMH0.yX84jr-bTYl6GZbEB5GDVtrRUzpAIA3m_BlCAXYRmpU`,
+          },
+        }
+      )
+      .then((res) => res.data);
+  const { data, error } = useSWR(
+    "https://api.visionid.vn/api/vision-service/get-auth-info",
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  if (error) <p>Loading failed...</p>;
+  if (!data) <h1>Loading...</h1>;
 
   return (
     <HeaderContainer>

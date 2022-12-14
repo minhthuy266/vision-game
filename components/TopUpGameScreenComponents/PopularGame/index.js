@@ -65,11 +65,13 @@ const PopularGame = () => {
             return (
               <div key={el.id}>
                 <Link href="/game/vinh-hang-ky-nguyen">
-                  <div>
-                    <Image src={el.img} alt={el.name} />
-                  </div>
+                  <>
+                    <div>
+                      <Image src={el.img} alt={el.name} />
+                    </div>
 
-                  <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+                    <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+                  </>
                 </Link>
               </div>
             );

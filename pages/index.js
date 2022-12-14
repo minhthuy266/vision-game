@@ -12,17 +12,17 @@ import TopBanner from "../components/HomeScreenComponents/TopBanner";
 export default function Home({ userInfo, isAuthed }) {
   const dispatch = useDispatch();
 
-  // async function getUserInfor() {
-  //   if (userInfo) {
-  //     dispatch(handleUserInfo(userInfo));
-  //     Cookies.set("isLogin", true);
-  //   }
-  // }
+  async function getUserInfor() {
+    if (userInfo) {
+      dispatch(handleUserInfo(userInfo));
+      Cookies.set("isLogin", true);
+    }
+  }
 
-  // useEffect(() => {
-  //   getUserInfor();
-  //   return () => {};
-  // }, []);
+  useEffect(() => {
+    getUserInfor();
+    return () => {};
+  }, []);
 
   return (
     <div>
@@ -35,20 +35,54 @@ export default function Home({ userInfo, isAuthed }) {
   );
 }
 
-// export function getServerSideProps(context) {
-//   return withSessionSsr(async (context) => {
-//     const res = await fetch(`${process.env.APP_URL}/api/auth/infor`, {
-//       headers: {
-//         cookie: context.req.headers.cookie,
-//       },
-//     });
+export function getServerSideProps(context) {
+  return withSessionSsr(async (context) => {
+    let query = {
+      device: {
+        name: "xxx",
+        platform: "xxx",
+        device_token: "xxx",
+      },
+    };
 
-//     console.log("first", context);
-//     const data = await res.json();
-//     return {
-//       props: {
-//         userInfo: data.data || null,
-//       },
-//     };
-//   })(context);
-// }
+    let token = "Bearer " + context.req.session.token?.refresh_token;
+
+    const res = await fetch(`https://api.visionid.vn/api/auth/relogin`, {
+      method: "POST",
+      // headers: {
+      //   cookie: context.req.headers.cookie,
+      // },
+
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+
+      body: JSON.stringify(query),
+    });
+
+    const data = await res.json();
+    console.log("first", data, "=======", token);
+
+    if (data) {
+      context.req.session.token.access_token = data?.data?.access_token;
+      context.req.session.token.refresh_token = data?.data?.refresh_token;
+
+      // Cookies.set("accessToken", data.data.access_token);
+      // Cookies.set("refreshToken", data.data.refresh_token);
+
+      console.log("dddd", data);
+
+      await context.req.session.save();
+    }
+
+    // console.log("object", context.req.session.token);
+
+    return {
+      props: {
+        // userInfo: data.data || null,
+        // accessToken: data.data.access_token,
+      },
+    };
+  })(context);
+}

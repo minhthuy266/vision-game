@@ -130,14 +130,16 @@ const HomeNews = () => {
             return (
               <div key={el.id}>
                 <Link href="/news/news-detail">
-                  <div>
-                    <Image src={el.img} alt={el.name} />
-                  </div>
+                  <>
+                    <div>
+                      <Image src={el.img} alt={el.name} />
+                    </div>
 
-                  <StyledCardBody>
-                    <StyledCardBodyDate>15/08/2022 23:59</StyledCardBodyDate>
-                    <StyledCardBodyTitle>{el.title}</StyledCardBodyTitle>
-                  </StyledCardBody>
+                    <StyledCardBody>
+                      <StyledCardBodyDate>15/08/2022 23:59</StyledCardBodyDate>
+                      <StyledCardBodyTitle>{el.title}</StyledCardBodyTitle>
+                    </StyledCardBody>
+                  </>
                 </Link>
               </div>
             );
