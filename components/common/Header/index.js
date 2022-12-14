@@ -45,10 +45,10 @@ const Header = () => {
       label: <Link href="/game-store">Kho Game</Link>,
       key: "/game-store",
     },
-    {
-      label: <Link href="/top-up-game">Nạp Game</Link>,
-      key: "/top-up-game",
-    },
+    // {
+    //   label: <Link href="/top-up-game">Nạp Game</Link>,
+    //   key: "/top-up-game",
+    // },
 
     {
       label: <Link href="/subscription-fee">Gói Cước</Link>,
