@@ -41,54 +41,54 @@ export default function Home({ userInfo, isAuthed }) {
   );
 }
 
-export function getServerSideProps(context) {
-  return withSessionSsr(async (context) => {
-    let query = {
-      device: {
-        name: "xxx",
-        platform: "xxx",
-        device_token: "xxx",
-      },
-    };
+// export function getServerSideProps(context) {
+//   return withSessionSsr(async (context) => {
+//     let query = {
+//       device: {
+//         name: "xxx",
+//         platform: "xxx",
+//         device_token: "xxx",
+//       },
+//     };
 
-    let token = "Bearer " + context.req.session.token?.refresh_token;
+//     let token = "Bearer " + context.req.session.token?.refresh_token;
 
-    const res = await fetch(`https://api.visionid.vn/api/auth/relogin`, {
-      method: "POST",
-      // headers: {
-      //   cookie: context.req.headers.cookie,
-      // },
+//     const res = await fetch(`https://api.visionid.vn/api/auth/relogin`, {
+//       method: "POST",
+//       // headers: {
+//       //   cookie: context.req.headers.cookie,
+//       // },
 
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: token,
+//       },
 
-      body: JSON.stringify(query),
-    });
+//       body: JSON.stringify(query),
+//     });
 
-    const data = await res.json();
-    console.log("first", data, "=======", token);
+//     const data = await res.json();
+//     console.log("first", data, "=======", token);
 
-    if (data) {
-      context.req.session.token.access_token = data?.data?.access_token;
-      context.req.session.token.refresh_token = data?.data?.refresh_token;
+//     if (data) {
+//       context.req.session.token.access_token = data?.data?.access_token;
+//       context.req.session.token.refresh_token = data?.data?.refresh_token;
 
-      // Cookies.set("accessToken", data.data.access_token);
-      // Cookies.set("refreshToken", data.data.refresh_token);
+//       // Cookies.set("accessToken", data.data.access_token);
+//       // Cookies.set("refreshToken", data.data.refresh_token);
 
-      console.log("dddd", data);
+//       console.log("dddd", data);
 
-      await context.req.session.save();
-    }
+//       await context.req.session.save();
+//     }
 
-    // console.log("object", context.req.session.token);
+//     // console.log("object", context.req.session.token);
 
-    return {
-      props: {
-        // userInfo: data.data || null,
-        // accessToken: data.data.access_token,
-      },
-    };
-  })(context);
-}
+//     return {
+//       props: {
+//         // userInfo: data.data || null,
+//         // accessToken: data.data.access_token,
+//       },
+//     };
+//   })(context);
+// }

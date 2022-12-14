@@ -1,4 +1,5 @@
 import { serialize } from "cookie";
+import Cookies from "js-cookie";
 import { withSessionRoute } from "lib/withSession";
 
 export default withSessionRoute(async function routeLogin(req, res) {
@@ -15,7 +16,13 @@ export default withSessionRoute(async function routeLogin(req, res) {
     path: "/",
   });
 
+  // const serialisedIsAuthed = serialize(
+  //   "isAuthed",
+  //   req.session.token.access_token ? true : false
+  // );
+
   res.setHeader("Set-Cookie", serialised);
+  // res.setHeader("Set-Cookie", serialisedIsAuthed);
 
   await req.session.save();
 

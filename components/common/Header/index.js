@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import UserHeader from "public/assets/icons/UserHeader";
 import VisionLogo from "public/assets/icons/VisionLogo";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useSWR from "swr";
 import {
   HeaderContainer,
@@ -17,6 +17,8 @@ import {
   StyledMenuDesktop,
   StyledMenuTabletMobile,
 } from "./styles";
+import { handleUserInfo } from "feature/user/userSlice";
+import Cookies from "js-cookie";
 
 const Header = () => {
   const router = useRouter();
@@ -30,6 +32,9 @@ const Header = () => {
 
   async function handleLogout() {
     await axios.get("/api/logout");
+    // await axios.get("https://auth.visionid.vn/logout/game-portal-sandbox");
+
+    await dispatch(handleUserInfo(null));
   }
 
   useEffect(() => {
@@ -80,7 +85,9 @@ const Header = () => {
 
     {
       label: userInfo ? (
-        <div>
+        <div
+          style={{ display: "flex", alignItems: "center", paddingLeft: "2rem" }}
+        >
           <Image
             src={userInfo.profilePhoto}
             alt="User Avatar"
@@ -113,8 +120,12 @@ const Header = () => {
             {
               label: (
                 <a
-                  onClick={handleLogout}
-                  href="https://auth.visionid.vn/logout/game-portal-sandbox"
+                  // target="_blank"
+                  onClick={() => {
+                    handleLogout();
+                  }}
+                  // href="https://auth.visionid.vn/logout/game-portal-sandbox"
+                  // rel="noreferrer"
                 >
                   Đăng xuất
                 </a>
@@ -141,32 +152,19 @@ const Header = () => {
     setOpen(false);
   };
 
-  const fetcher = async (url) =>
-    await axios
-      .post(
-        url,
-        {
-          vision_token: md5(
-            `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjYyZDU5NDAwZTg4NDlhOWI5NDc4OTEwYiJ9LCJpYXQiOjE2Njk5NTQ0MDAsImV4cCI6MTY3MzU1NDQwMH0.yX84jr-bTYl6GZbEB5GDVtrRUzpAIA3m_BlCAXYRmpUmd5-vision-network`
-          ),
-        },
-        {
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6IjYyZDU5NDAwZTg4NDlhOWI5NDc4OTEwYiJ9LCJpYXQiOjE2Njk5NTQ0MDAsImV4cCI6MTY3MzU1NDQwMH0.yX84jr-bTYl6GZbEB5GDVtrRUzpAIA3m_BlCAXYRmpU`,
-          },
-        }
-      )
-      .then((res) => res.data);
-  const { data, error } = useSWR(
-    "https://api.visionid.vn/api/vision-service/get-auth-info",
-    fetcher,
-    {
-      revalidateOnFocus: false,
-    }
-  );
+  const fetcher = async (url) => await axios.get(url).then((res) => res.data);
+  const { data, error } = useSWR("/api/user", fetcher, {
+    revalidateOnFocus: false,
+  });
 
   if (error) <p>Loading failed...</p>;
   if (!data) <h1>Loading...</h1>;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleUserInfo(data?.data));
+  }, [data, dispatch]);
 
   return (
     <HeaderContainer>
