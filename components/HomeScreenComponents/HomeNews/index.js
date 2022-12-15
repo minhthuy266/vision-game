@@ -22,7 +22,7 @@ import {
   StyledTopNewsTitle,
 } from "./styles";
 
-const HomeNews = () => {
+const HomeNews = ({ homeNewsList }) => {
   const newsList = [
     {
       id: 2,
@@ -97,28 +97,31 @@ const HomeNews = () => {
     },
   ];
 
+  console.log("FFFFF", homeNewsList);
+
   return (
     <StyledWrapper>
       <StyledSectionWrapper>
         <HeaderSection href="/" title="Tin tức - Sự kiện" />
-        <Link href="/news/news-detail">
+        <Link href={`/news/${homeNewsList?.news_details?.[0]._id}`}>
           <StyledTopNews>
             <div>
-              <Image src={NewsItem1} alt="News Item 1" />
+              <Image
+                src={homeNewsList?.news_details?.[0].image}
+                alt="News Item 1"
+                width={100}
+                height={100}
+              />
             </div>
 
             <div>
               <StyledTopNewsTitle>
-                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
-                Nam!
+                {homeNewsList?.news_details?.[0].title}
               </StyledTopNewsTitle>
 
               <div>
                 <StyledTopNewsExcerpt>
-                  Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên
-                  Minh Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên
-                  Minh Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những
-                  skin tướng siêu hiếm trong dịp đặc biệt này.
+                  {homeNewsList?.news_details?.[0].excerpt}
                 </StyledTopNewsExcerpt>
               </div>
             </div>
@@ -126,17 +129,24 @@ const HomeNews = () => {
         </Link>
 
         <StyledNewsList>
-          {newsList.map((el) => {
+          {homeNewsList?.news_details?.slice(1).map((el) => {
             return (
-              <div key={el.id}>
-                <Link href="/news/news-detail">
+              <div key={el._id}>
+                <Link href={`/news/${el._id}`}>
                   <>
                     <div>
-                      <Image src={el.img} alt={el.name} />
+                      <Image
+                        src={el.image}
+                        alt={el.title}
+                        width={200}
+                        height={200}
+                      />
                     </div>
 
                     <StyledCardBody>
-                      <StyledCardBodyDate>15/08/2022 23:59</StyledCardBodyDate>
+                      <StyledCardBodyDate>
+                        {el.publish_date.toLocaleString()}
+                      </StyledCardBodyDate>
                       <StyledCardBodyTitle>{el.title}</StyledCardBodyTitle>
                     </StyledCardBody>
                   </>

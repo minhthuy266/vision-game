@@ -9,8 +9,9 @@ import Head from "next/head";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import TopBanner from "../components/HomeScreenComponents/TopBanner";
+import axios from "axios";
 
-export default function Home({ userInfo, isAuthed }) {
+export default function Home({ userInfo, isAuthed, homeNewsList }) {
   const dispatch = useDispatch();
 
   async function getUserInfor() {
@@ -35,60 +36,24 @@ export default function Home({ userInfo, isAuthed }) {
         <TopGame />
         <MiniGame />
         <GameList />
-        <HomeNews />
+        <HomeNews homeNewsList={homeNewsList} />
       </div>
     </>
   );
 }
 
-// export function getServerSideProps(context) {
-//   return withSessionSsr(async (context) => {
-//     let query = {
-//       device: {
-//         name: "xxx",
-//         platform: "xxx",
-//         device_token: "xxx",
-//       },
-//     };
+export const getStaticProps = async (ctx) => {
+  const { data } = await axios.post(`${process.env.API_URL}/api/news/list`, {
+    order: {
+      createdAt: -1,
+    },
+    limit: 9,
+    page: 1,
+  }); // your fetch function here
 
-//     let token = "Bearer " + context.req.session.token?.refresh_token;
-
-//     const res = await fetch(`https://api.visionid.vn/api/auth/relogin`, {
-//       method: "POST",
-//       // headers: {
-//       //   cookie: context.req.headers.cookie,
-//       // },
-
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: token,
-//       },
-
-//       body: JSON.stringify(query),
-//     });
-
-//     const data = await res.json();
-//     console.log("first", data, "=======", token);
-
-//     if (data) {
-//       context.req.session.token.access_token = data?.data?.access_token;
-//       context.req.session.token.refresh_token = data?.data?.refresh_token;
-
-//       // Cookies.set("accessToken", data.data.access_token);
-//       // Cookies.set("refreshToken", data.data.refresh_token);
-
-//       console.log("dddd", data);
-
-//       await context.req.session.save();
-//     }
-
-//     // console.log("object", context.req.session.token);
-
-//     return {
-//       props: {
-//         // userInfo: data.data || null,
-//         // accessToken: data.data.access_token,
-//       },
-//     };
-//   })(context);
-// }
+  return {
+    props: {
+      homeNewsList: data.data,
+    },
+  };
+};

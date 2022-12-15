@@ -12,7 +12,9 @@ import {
 import NewsItem from "public/assets/images/NewsScreen_NewsItem1.png";
 import Link from "next/link";
 
-const NewsListComp = () => {
+const NewsListComp = ({ data }) => {
+  console.log("DDDD", data);
+
   return (
     <div>
       <StyledHeader>
@@ -20,181 +22,28 @@ const NewsListComp = () => {
       </StyledHeader>
 
       <StyledBodyNewsList>
-        <Link href="/news/news-detail">
-          <StyledNewsItem>
-            <Image src={NewsItem} alt="News Item" />
+        {data?.news_details?.map((el) => {
+          return (
+            <Link href={`news/${el._id}`} key={el._id}>
+              <StyledNewsItem>
+                <Image
+                  src={el.image}
+                  alt="News Item"
+                  width={100}
+                  height={100}
+                />
 
-            <div>
-              <StyledNewsItemTitle>
-                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
-                Nam!
-              </StyledNewsItemTitle>
+                <div>
+                  <StyledNewsItemTitle>{el.title}</StyledNewsItemTitle>
 
-              <StyledNewsItemDate>08/08/2022 18:00</StyledNewsItemDate>
+                  <StyledNewsItemDate>{el.publish_date}</StyledNewsItemDate>
 
-              <StyledNewsItemExcerpt>
-                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
-                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
-                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
-                tướng siêu hiếm trong dịp đặc biệt này.
-              </StyledNewsItemExcerpt>
-            </div>
-          </StyledNewsItem>
-        </Link>
-
-        <Link href="/news/news-detail">
-          <StyledNewsItem>
-            <Image src={NewsItem} alt="News Item" />
-
-            <div>
-              <StyledNewsItemTitle>
-                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
-                Nam!
-              </StyledNewsItemTitle>
-
-              <StyledNewsItemDate>08/08/2022 18:00</StyledNewsItemDate>
-
-              <StyledNewsItemExcerpt>
-                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
-                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
-                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
-                tướng siêu hiếm trong dịp đặc biệt này.
-              </StyledNewsItemExcerpt>
-            </div>
-          </StyledNewsItem>
-        </Link>
-
-        <Link href="/news/news-detail">
-          <StyledNewsItem>
-            <Image src={NewsItem} alt="News Item" />
-
-            <div>
-              <StyledNewsItemTitle>
-                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
-                Nam!
-              </StyledNewsItemTitle>
-
-              <StyledNewsItemDate>08/08/2022 18:00</StyledNewsItemDate>
-
-              <StyledNewsItemExcerpt>
-                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
-                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
-                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
-                tướng siêu hiếm trong dịp đặc biệt này.
-              </StyledNewsItemExcerpt>
-            </div>
-          </StyledNewsItem>
-        </Link>
-
-        <Link href="/news/news-detail">
-          <StyledNewsItem>
-            <Image src={NewsItem} alt="News Item" />
-
-            <div>
-              <StyledNewsItemTitle>
-                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
-                Nam!
-              </StyledNewsItemTitle>
-
-              <StyledNewsItemDate>08/08/2022 18:00</StyledNewsItemDate>
-
-              <StyledNewsItemExcerpt>
-                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
-                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
-                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
-                tướng siêu hiếm trong dịp đặc biệt này.
-              </StyledNewsItemExcerpt>
-            </div>
-          </StyledNewsItem>
-        </Link>
-
-        <Link href="/news/news-detail">
-          <StyledNewsItem>
-            <Image src={NewsItem} alt="News Item" />
-
-            <div>
-              <StyledNewsItemTitle>
-                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
-                Nam!
-              </StyledNewsItemTitle>
-
-              <StyledNewsItemDate>08/08/2022 18:00</StyledNewsItemDate>
-
-              <StyledNewsItemExcerpt>
-                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
-                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
-                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
-                tướng siêu hiếm trong dịp đặc biệt này.
-              </StyledNewsItemExcerpt>
-            </div>
-          </StyledNewsItem>
-        </Link>
-
-        <Link href="/news/news-detail">
-          <StyledNewsItem>
-            <Image src={NewsItem} alt="News Item" />
-
-            <div>
-              <StyledNewsItemTitle>
-                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
-                Nam!
-              </StyledNewsItemTitle>
-
-              <StyledNewsItemDate>08/08/2022 18:00</StyledNewsItemDate>
-
-              <StyledNewsItemExcerpt>
-                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
-                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
-                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
-                tướng siêu hiếm trong dịp đặc biệt này.
-              </StyledNewsItemExcerpt>
-            </div>
-          </StyledNewsItem>
-        </Link>
-
-        <Link href="/news/news-detail">
-          <StyledNewsItem>
-            <Image src={NewsItem} alt="News Item" />
-
-            <div>
-              <StyledNewsItemTitle>
-                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
-                Nam!
-              </StyledNewsItemTitle>
-
-              <StyledNewsItemDate>08/08/2022 18:00</StyledNewsItemDate>
-
-              <StyledNewsItemExcerpt>
-                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
-                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
-                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
-                tướng siêu hiếm trong dịp đặc biệt này.
-              </StyledNewsItemExcerpt>
-            </div>
-          </StyledNewsItem>
-        </Link>
-
-        <Link href="/news/news-detail">
-          <StyledNewsItem>
-            <Image src={NewsItem} alt="News Item" />
-
-            <div>
-              <StyledNewsItemTitle>
-                Cùng ROG mừng sinh nhật 10 năm Liên Minh Huyền Thoại tại Việt
-                Nam!
-              </StyledNewsItemTitle>
-
-              <StyledNewsItemDate>08/08/2022 18:00</StyledNewsItemDate>
-
-              <StyledNewsItemExcerpt>
-                Tham gia ngay thôi nào!! Hòa cùng không khí sinh nhật Liên Minh
-                Huyền Thoại lần thứ 10, ASUS hân hạnh đồng hành cùng Liên Minh
-                Huyền Thoại mang đến cho người dung cợ hội sỡ hữu những skin
-                tướng siêu hiếm trong dịp đặc biệt này.
-              </StyledNewsItemExcerpt>
-            </div>
-          </StyledNewsItem>
-        </Link>
+                  <StyledNewsItemExcerpt>{el.excerpt}</StyledNewsItemExcerpt>
+                </div>
+              </StyledNewsItem>
+            </Link>
+          );
+        })}
       </StyledBodyNewsList>
     </div>
   );

@@ -11,6 +11,8 @@ const nextConfig = {
       "platform-lookaside.fbsbx.com",
       "lh3.googleusercontent.com",
       "visionid.vn",
+      "admin-dev-rise.visionnetwork.vn",
+      "dev-rise.visionnetwork.vn",
     ],
   },
 };

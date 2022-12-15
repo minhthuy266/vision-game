@@ -3,11 +3,11 @@ import { StyledNewsContainer } from "./styles";
 import FeaturedNewsComp from "./SubComponent/FeaturedNewsComp";
 import NewsListComp from "./SubComponent/NewsListComp";
 
-const MainNewsComponent = () => {
+const MainNewsComponent = ({ data, mostViewNews }) => {
   return (
     <StyledNewsContainer>
-      <NewsListComp />
-      <FeaturedNewsComp />
+      <NewsListComp data={data} />
+      <FeaturedNewsComp mostViewNews={mostViewNews} />
     </StyledNewsContainer>
   );
 };
