@@ -18,7 +18,7 @@ import GameItem15 from "public/assets/images/HomeScreen_ListGame_Item15.png";
 import GameItem16 from "public/assets/images/HomeScreen_ListGame_Item16.png";
 import Image from "next/image";
 
-const GameTab = () => {
+const GameTab = ({ data }) => {
   const gameList = [
     {
       id: 1,
@@ -126,11 +126,20 @@ const GameTab = () => {
       </StyledHeader>
 
       <StyledBody>
-        {gameList.map((el) => {
+        {data?.intro?.map((el) => {
           return (
-            <div key={el.id}>
+            <div key={el._id}>
               <div>
-                <Image src={el.img} alt={el.name} />
+                <Image
+                  src={
+                    el.logo === null
+                      ? "https://picsum.photos/seed/picsum/200/300"
+                      : el.logo
+                  }
+                  alt={el.name}
+                  width={50}
+                  height={50}
+                />
               </div>
 
               <div style={{ marginTop: "0.6rem" }}>{el.name}</div>

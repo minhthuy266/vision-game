@@ -22,7 +22,7 @@ import Image from "next/image";
 import { StyledWrapper } from "styles/styles";
 import Link from "next/link";
 
-const GameList = () => {
+const GameList = ({ allGameList }) => {
   const gameList = [
     {
       id: 1,
@@ -127,13 +127,22 @@ const GameList = () => {
         <HeaderSection href="/" title="Danh sách game" />
 
         <StyledList>
-          {gameList.map((el) => {
+          {allGameList?.intro?.map((el) => {
             return (
-              <div key={el.id}>
+              <div key={el._id}>
                 <Link href={`game/vinh-hang-ky-nguyen`}>
                   <>
                     <div>
-                      <Image src={el.img} alt={el.name} />
+                      <Image
+                        src={
+                          el.logo === null
+                            ? "https://picsum.photos/seed/picsum/200/300"
+                            : el.logo
+                        }
+                        alt={el.name}
+                        width={100}
+                        height={100}
+                      />
                     </div>
 
                     <div style={{ marginTop: "0.6rem" }}>{el.name}</div>

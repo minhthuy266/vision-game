@@ -26,7 +26,11 @@ const FeaturedNewsComp = ({ mostViewNews }) => {
             <StyledBodyFeaturedNewsList>
               <div>
                 <Image
-                  src={el.image}
+                  src={
+                    el.image === null
+                      ? "https://picsum.photos/seed/picsum/200/300"
+                      : el.image
+                  }
                   alt="Featured News"
                   width={100}
                   height={100}

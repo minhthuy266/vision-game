@@ -11,22 +11,35 @@ import {
   StyledTopBannerContainer,
 } from "./styles";
 
-const TopBanner = () => {
+const TopBanner = ({ gameDetails }) => {
   return (
     <StyledTopBannerContainer>
       <Image src={GameImg} alt="Banner" className="banner-img" />
       <StyledWrapper style={{ position: "relative" }}>
         <StyledGameIcon>
-          <Image src={GameIcon} alt="Game Icon" />
+          <Image
+            src={
+              gameDetails.application.logo === null
+                ? "https://picsum.photos/seed/picsum/200/300"
+                : gameDetails.application.logo
+            }
+            width={160}
+            height={160}
+            alt="Game Icon"
+          />
 
           <StyledGroupBtn>
             <Button>Chơi ngay</Button>
 
             <Button>Nạp game</Button>
 
-            <Image src={AppleStore} alt="Apple Store" />
+            <a href={gameDetails.app_store}>
+              <Image src={AppleStore} alt="Apple Store" />
+            </a>
 
-            <Image src={GooglePlay} alt="Google Play" />
+            <a href={gameDetails.google_play}>
+              <Image src={GooglePlay} alt="Google Play" />
+            </a>
           </StyledGroupBtn>
         </StyledGameIcon>
       </StyledWrapper>

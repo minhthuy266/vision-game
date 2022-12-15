@@ -13,6 +13,7 @@ const nextConfig = {
       "visionid.vn",
       "admin-dev-rise.visionnetwork.vn",
       "dev-rise.visionnetwork.vn",
+      "picsum.photos",
     ],
   },
 };

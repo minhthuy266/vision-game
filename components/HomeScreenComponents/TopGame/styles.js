@@ -39,7 +39,7 @@ export const StyledSectionWrapper = styled.div`
   img {
     border-radius: 12px;
     width: 100%;
-    height: 100%;
+    height: 25rem;
     object-fit: cover;
   }
 

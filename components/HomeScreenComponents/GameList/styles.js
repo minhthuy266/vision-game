@@ -30,7 +30,8 @@ export const StyledList = styled.div`
 
   img {
     width: 100%;
-    height: 100%;
+    height: 18rem;
+    border-radius: 12px;
     object-fit: cover;
   }
 `;

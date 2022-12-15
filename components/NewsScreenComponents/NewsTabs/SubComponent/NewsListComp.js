@@ -13,8 +13,6 @@ import NewsItem from "public/assets/images/NewsScreen_NewsItem1.png";
 import Link from "next/link";
 
 const NewsListComp = ({ data }) => {
-  console.log("DDDD", data);
-
   return (
     <div>
       <StyledHeader>
@@ -22,28 +20,34 @@ const NewsListComp = ({ data }) => {
       </StyledHeader>
 
       <StyledBodyNewsList>
-        {data?.news_details?.map((el) => {
-          return (
-            <Link href={`news/${el._id}`} key={el._id}>
-              <StyledNewsItem>
-                <Image
-                  src={el.image}
-                  alt="News Item"
-                  width={100}
-                  height={100}
-                />
+        {data?.news_details
+          ?.filter((item) => item !== null)
+          .map((el) => {
+            return (
+              <Link href={`news/${el?._id}`} key={el._id}>
+                <StyledNewsItem>
+                  <Image
+                    src={
+                      el.image === null
+                        ? "https://picsum.photos/seed/picsum/200/300"
+                        : el.image
+                    }
+                    alt="News Item"
+                    width={100}
+                    height={100}
+                  />
 
-                <div>
-                  <StyledNewsItemTitle>{el.title}</StyledNewsItemTitle>
+                  <div>
+                    <StyledNewsItemTitle>{el.title}</StyledNewsItemTitle>
 
-                  <StyledNewsItemDate>{el.publish_date}</StyledNewsItemDate>
+                    <StyledNewsItemDate>{el.publish_date}</StyledNewsItemDate>
 
-                  <StyledNewsItemExcerpt>{el.excerpt}</StyledNewsItemExcerpt>
-                </div>
-              </StyledNewsItem>
-            </Link>
-          );
-        })}
+                    <StyledNewsItemExcerpt>{el.excerpt}</StyledNewsItemExcerpt>
+                  </div>
+                </StyledNewsItem>
+              </Link>
+            );
+          })}
       </StyledBodyNewsList>
     </div>
   );

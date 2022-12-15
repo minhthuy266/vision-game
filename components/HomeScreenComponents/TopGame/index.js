@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import HeaderSection from "../HeaderSection";
 import { StyledSectionWrapper, StyledWrapper } from "./styles";
 
-const TopGame = () => {
+const TopGame = ({ topGameList }) => {
   const gameList = [
     {
       id: 1,
@@ -85,11 +85,20 @@ const TopGame = () => {
           }}
           modules={[Pagination, Navigation]}
         >
-          {gameList.map((el) => {
+          {topGameList?.intro?.map((el) => {
             return (
-              <SwiperSlide key={el.id}>
-                <Link href={`game/${el.slug}`}>
-                  <Image src={el.img} alt={el.name} />
+              <SwiperSlide key={el._id}>
+                <Link href={`game/${el._id}`}>
+                  <Image
+                    src={
+                      el.logo === null
+                        ? "https://picsum.photos/seed/picsum/200/300"
+                        : el.logo
+                    }
+                    alt={el.name}
+                    width={100}
+                    height={100}
+                  />
                 </Link>
               </SwiperSlide>
             );

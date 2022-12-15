@@ -16,6 +16,10 @@ export const StyledHeader = styled.div`
 export const StyledBodyNewsList = styled.div`
   padding-right: 2rem;
 
+  a:last-child > div {
+    border-bottom: 1px solid transparent;
+  }
+
   @media only screen and (max-width: 50em) {
     padding-right: 0;
   }
@@ -25,7 +29,8 @@ export const StyledNewsItem = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 2rem;
-  margin-bottom: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid #ecedef;
 
   @media only screen and (max-width: 43.75em) {
     grid-template-columns: 1fr;

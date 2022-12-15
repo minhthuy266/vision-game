@@ -22,9 +22,11 @@ export const getStaticPaths = async (ctx) => {
   const { data } = await axios.post(`${process.env.API_URL}/api/news/list`, {});
 
   return {
-    paths: data?.data?.news_details?.map((post) => ({
-      params: { newsSlug: post._id },
-    })),
+    paths: data?.data?.news_details
+      ?.filter((el) => el !== null)
+      .map((post) => ({
+        params: { newsSlug: post._id },
+      })),
     fallback: "blocking",
   };
 };
