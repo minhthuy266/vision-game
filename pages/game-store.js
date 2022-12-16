@@ -20,7 +20,9 @@ const GameStoreScreen = ({
       </Head>
       <div>
         <TopBanner />
-        <TopGame topGameList={topGameList} />
+        <div style={{ marginTop: "4rem" }}>
+          <TopGame topGameList={topGameList} />
+        </div>
         <GameListTab
           allGameList={allGameList}
           h5GameList={h5GameList}

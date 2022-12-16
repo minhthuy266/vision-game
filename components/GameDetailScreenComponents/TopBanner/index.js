@@ -14,12 +14,22 @@ import {
 const TopBanner = ({ gameDetails }) => {
   return (
     <StyledTopBannerContainer>
-      <Image src={GameImg} alt="Banner" className="banner-img" />
+      <Image
+        src={
+          gameDetails?.cover_image === null
+            ? "https://picsum.photos/seed/picsum/200/300"
+            : gameDetails?.cover_image
+        }
+        alt="Banner"
+        className="banner-img"
+        width={100}
+        height={100}
+      />
       <StyledWrapper style={{ position: "relative" }}>
         <StyledGameIcon>
           <Image
             src={
-              gameDetails.application.logo === null
+              gameDetails?.application?.logo === null
                 ? "https://picsum.photos/seed/picsum/200/300"
                 : gameDetails.application.logo
             }
@@ -29,15 +39,19 @@ const TopBanner = ({ gameDetails }) => {
           />
 
           <StyledGroupBtn>
-            <Button>Chơi ngay</Button>
+            <a href={gameDetails.game_play} target="_blank" rel="noreferrer">
+              <Button>Chơi ngay</Button>
+            </a>
 
-            <Button>Nạp game</Button>
+            <a href={gameDetails.top_up} target="_blank" rel="noreferrer">
+              <Button>Nạp game</Button>
+            </a>
 
-            <a href={gameDetails.app_store}>
+            <a href={gameDetails.app_store} target="_blank" rel="noreferrer">
               <Image src={AppleStore} alt="Apple Store" />
             </a>
 
-            <a href={gameDetails.google_play}>
+            <a href={gameDetails.google_play} target="_blank" rel="noreferrer">
               <Image src={GooglePlay} alt="Google Play" />
             </a>
           </StyledGroupBtn>

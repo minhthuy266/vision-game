@@ -1,9 +1,10 @@
 import GameDetail from "@/components/GameDetailScreenComponents/GameDetail";
 import TopBanner from "@/components/GameDetailScreenComponents/TopBanner";
+import PopularGame from "@/components/TopUpGameScreenComponents/PopularGame";
 import axios from "axios";
 import Head from "next/head";
 
-const GameDetailScreen = ({ gameDetails }) => {
+const GameDetailScreen = ({ gameDetails, topGameList }) => {
   return (
     <>
       <Head>
@@ -12,6 +13,7 @@ const GameDetailScreen = ({ gameDetails }) => {
       <div>
         <TopBanner gameDetails={gameDetails} />
         <GameDetail gameDetails={gameDetails} />
+        <PopularGame topGameList={topGameList} />
       </div>
     </>
   );
@@ -41,9 +43,19 @@ export const getStaticProps = async (ctx) => {
     id: gameSlug,
   });
 
+  const topGameList = await axios.post(
+    `${process.env.API_URL}/api/game/list-intro`,
+    {
+      order: {
+        average: "DESC",
+      },
+    }
+  );
+
   return {
     props: {
       gameDetails: data.data,
+      topGameList: topGameList.data.data,
     },
   };
 };

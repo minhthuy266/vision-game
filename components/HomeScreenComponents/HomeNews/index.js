@@ -97,12 +97,10 @@ const HomeNews = ({ homeNewsList }) => {
     },
   ];
 
-  console.log("FFFFF", homeNewsList);
-
   return (
     <StyledWrapper>
       <StyledSectionWrapper>
-        <HeaderSection href="/" title="Tin tức - Sự kiện" />
+        <HeaderSection href="/news" title="Tin tức - Sự kiện" hasViewAllBtn />
         <Link href={`/news/${homeNewsList?.news_details?.[0]._id}`}>
           <StyledTopNews>
             <div>

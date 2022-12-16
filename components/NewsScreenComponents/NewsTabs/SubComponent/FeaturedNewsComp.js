@@ -1,6 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
 import SpeakerIcon from "public/assets/icons/SpeakerIcon";
-import React from "react";
 import {
   FeaturedNewsContainer,
   StyledBodyFeaturedNewsList,
@@ -8,8 +8,6 @@ import {
   StyledFeaturedNewsItemTitle,
   StyledHeader,
 } from "./styles";
-import FeaturedNews from "public/assets/images/NewsScreen_FeaturedNewsItem1.png";
-import Link from "next/link";
 
 const FeaturedNewsComp = ({ mostViewNews }) => {
   console.log("object", mostViewNews);
@@ -20,9 +18,9 @@ const FeaturedNewsComp = ({ mostViewNews }) => {
         <SpeakerIcon /> Tin tức xem nhiều nhất
       </StyledHeader>
 
-      {mostViewNews?.news_details?.slice(0, 6).map((el) => {
+      {mostViewNews?.news_details?.slice(0, 5).map((el) => {
         return (
-          <Link href="/news/news-detail" key={el._id}>
+          <Link href={`/news/${el._id}`} key={el._id}>
             <StyledBodyFeaturedNewsList>
               <div>
                 <Image

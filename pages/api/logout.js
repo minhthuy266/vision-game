@@ -1,10 +1,7 @@
 import { serialize } from "cookie";
 import { withSessionRoute } from "lib/withSession";
-import axios from "axios";
 
 export default withSessionRoute(async function routeLogout(req, res) {
-  await axios("https://auth.visionid.vn/logout/game-portal-sandbox");
-
   const { cookies } = req;
 
   const jwt = cookies.accJWT;

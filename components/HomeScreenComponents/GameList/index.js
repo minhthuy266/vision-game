@@ -124,13 +124,17 @@ const GameList = ({ allGameList }) => {
   return (
     <StyledWrapper>
       <StyledSectionWrapper>
-        <HeaderSection href="/" title="Danh sách game" />
+        <HeaderSection
+          href="/game-store"
+          title="Danh sách game"
+          hasViewAllBtn
+        />
 
         <StyledList>
           {allGameList?.intro?.map((el) => {
             return (
               <div key={el._id}>
-                <Link href={`game/vinh-hang-ky-nguyen`}>
+                <Link href={`game/${el._id}`}>
                   <>
                     <div>
                       <Image

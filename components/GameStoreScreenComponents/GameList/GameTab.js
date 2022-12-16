@@ -17,6 +17,7 @@ import GameItem14 from "public/assets/images/HomeScreen_ListGame_Item14.png";
 import GameItem15 from "public/assets/images/HomeScreen_ListGame_Item15.png";
 import GameItem16 from "public/assets/images/HomeScreen_ListGame_Item16.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const GameTab = ({ data }) => {
   const gameList = [
@@ -128,7 +129,7 @@ const GameTab = ({ data }) => {
       <StyledBody>
         {data?.intro?.map((el) => {
           return (
-            <div key={el._id}>
+            <Link key={el._id} href={`/game/${el._id}`}>
               <div>
                 <Image
                   src={
@@ -143,7 +144,7 @@ const GameTab = ({ data }) => {
               </div>
 
               <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
-            </div>
+            </Link>
           );
         })}
       </StyledBody>

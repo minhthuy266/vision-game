@@ -1,6 +1,10 @@
+import { Pagination } from "antd";
+import { getNews } from "feature/newsSlice";
 import Image from "next/image";
+import Link from "next/link";
 import SpeakerIcon from "public/assets/icons/SpeakerIcon";
-import React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   StyledBodyNewsList,
   StyledHeader,
@@ -8,11 +12,26 @@ import {
   StyledNewsItemDate,
   StyledNewsItemExcerpt,
   StyledNewsItemTitle,
+  StyledPagination,
 } from "./styles";
-import NewsItem from "public/assets/images/NewsScreen_NewsItem1.png";
-import Link from "next/link";
 
-const NewsListComp = ({ data }) => {
+const NewsListComp = ({ data, category, total }) => {
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const [dataNews, setDataNews] = useState([]);
+
+  const { newsList, totalNews } = useSelector((state) => state.news);
+
+  console.log("TOTAL", total);
+
+  useEffect(() => {
+    if (page > 1) {
+      setDataNews(newsList?.news_details);
+    } else {
+      setDataNews(data?.news_details);
+    }
+  }, [data?.news_details, newsList?.news_details, page]);
+
   return (
     <div>
       <StyledHeader>
@@ -20,7 +39,7 @@ const NewsListComp = ({ data }) => {
       </StyledHeader>
 
       <StyledBodyNewsList>
-        {data?.news_details
+        {dataNews
           ?.filter((item) => item !== null)
           .map((el) => {
             return (
@@ -49,6 +68,26 @@ const NewsListComp = ({ data }) => {
             );
           })}
       </StyledBodyNewsList>
+
+      <StyledPagination>
+        <Pagination
+          simple
+          total={total}
+          pageSize={2}
+          onChange={(page) => {
+            setPage(page);
+
+            if (page > 1) {
+              dispatch(
+                getNews({
+                  page,
+                  category,
+                })
+              );
+            }
+          }}
+        />
+      </StyledPagination>
     </div>
   );
 };

@@ -41,7 +41,8 @@ export const StyledBody = styled.div`
 
   img {
     width: 100%;
-    height: 100%;
+    border-radius: 12px;
+    height: 18rem;
     object-fit: cover;
   }
 `;

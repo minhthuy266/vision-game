@@ -1,6 +1,8 @@
+import TopGame from "@/components/HomeScreenComponents/TopGame";
 import PopularGame from "@/components/TopUpGameScreenComponents/PopularGame";
 import { Rate } from "antd";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 import { StyledWrapper } from "styles/styles";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,17 +18,27 @@ import {
 } from "./styles";
 
 const GameDetail = ({ gameDetails }) => {
+  const { gameCategories } = useSelector((state) => state.game);
+
+  const returnGameCategory = () => {
+    return gameCategories.find(
+      (element) => element.value === gameDetails.categories
+    );
+  };
+
   return (
     <>
       <StyledWrapper>
         <StyledTitle>{gameDetails.name}</StyledTitle>
 
-        <StyledGenre>Thể loại: {gameDetails.categories}</StyledGenre>
+        <StyledGenre>
+          Thể loại: <span>{returnGameCategory()?.display}</span>
+        </StyledGenre>
 
         <StyledStar>
-          <Rate disabled allowHalf defaultValue={4.5} />
+          <Rate disabled allowHalf defaultValue={gameDetails.average} />
           <span className="ant-rate-text">
-            {gameDetails.average} - 99 đánh giá
+            {gameDetails.average} - {gameDetails.total_reviews} đánh giá
           </span>
         </StyledStar>
 
@@ -74,8 +86,6 @@ const GameDetail = ({ gameDetails }) => {
           </StyledDescriptionRight>
         </StyledDescription>
       </StyledWrapper>
-
-      <PopularGame />
     </>
   );
 };

@@ -53,7 +53,7 @@ const MiniGame = ({ miniGameList }) => {
   return (
     <StyledWrapper>
       <StyledSectionWrapper>
-        <HeaderSection href="/" title="Mini game" />
+        <HeaderSection href="/game-store" title="Mini game" hasViewAllBtn />
 
         <StyledList>
           {miniGameList?.intro?.map((el) => {

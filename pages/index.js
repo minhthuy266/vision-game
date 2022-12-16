@@ -2,7 +2,7 @@ import GameList from "@/components/HomeScreenComponents/GameList";
 import HomeNews from "@/components/HomeScreenComponents/HomeNews";
 import MiniGame from "@/components/HomeScreenComponents/MiniGame";
 import TopGame from "@/components/HomeScreenComponents/TopGame";
-import { handleUserInfo } from "feature/user/userSlice";
+import { handleUserInfo } from "feature/userSlice";
 import Cookies from "js-cookie";
 import { withSessionSsr } from "lib/withSession";
 import Head from "next/head";

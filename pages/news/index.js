@@ -42,6 +42,7 @@ export const getStaticProps = async (ctx) => {
 
   const allNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
+    limit: 2,
     filter: {
       categories: "tat_ca",
     },
@@ -49,6 +50,7 @@ export const getStaticProps = async (ctx) => {
 
   const hotNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
+    limit: 2,
     filter: {
       categories: "tin_nong",
     },
@@ -56,6 +58,7 @@ export const getStaticProps = async (ctx) => {
 
   const newGameNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
+    limit: 2,
     filter: {
       categories: "game_moi",
     },
@@ -63,6 +66,7 @@ export const getStaticProps = async (ctx) => {
 
   const eventNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
+    limit: 2,
     filter: {
       categories: "su_kien",
     },
@@ -70,6 +74,7 @@ export const getStaticProps = async (ctx) => {
 
   const promoteNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
+    limit: 2,
     filter: {
       categories: "uu_dai",
     },
@@ -86,11 +91,28 @@ export const getStaticProps = async (ctx) => {
 
   return {
     props: {
-      allNews: allNews.data.data,
-      hotNews: hotNews.data.data,
-      newGameNews: newGameNews.data.data,
-      eventNews: eventNews.data.data,
-      promoteNews: promoteNews.data.data,
+      allNews: {
+        list: allNews.data.data,
+        total: allNews.data.data.meta.pagination.total,
+      },
+      hotNews: {
+        list: hotNews.data.data,
+        total: hotNews.data.data.meta.pagination.total,
+      },
+      newGameNews: {
+        list: newGameNews.data.data,
+        total: newGameNews.data.data.meta.pagination.total,
+      },
+
+      eventNews: {
+        list: eventNews.data.data,
+        total: eventNews.data.data.meta.pagination.total,
+      },
+      promoteNews: {
+        list: promoteNews.data.data,
+        total: promoteNews.data.data.meta.pagination.total,
+      },
+
       mostViewNews: mostViewNews.data.data,
     },
   };

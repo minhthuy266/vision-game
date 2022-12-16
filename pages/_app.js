@@ -1,8 +1,8 @@
 import "antd/dist/antd.css";
-import { SessionProvider } from "next-auth/react";
-import { Provider } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Provider } from "react-redux";
+import { store } from "redux/store";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -10,7 +10,6 @@ import "swiper/css/scrollbar";
 import Layout from "../components/layouts";
 import "../styles/globals.css";
 import "../styles/responsive.css";
-import { store } from "redux/store";
 
 function MyApp({ Component, pageProps, session }) {
   const [showChild, setShowChild] = useState(false);
@@ -29,8 +28,6 @@ function MyApp({ Component, pageProps, session }) {
   if (!showChild) {
     return null;
   }
-
-  console.log("page", pageProps);
 
   return (
     // <SessionProvider session={session}>

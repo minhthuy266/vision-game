@@ -145,3 +145,10 @@ export const StyledFeaturedNewsItemExcerpt = styled.div`
   line-height: 1.8rem;
   color: #b5b5b5;
 `;
+
+export const StyledPagination = styled.div`
+  text-align: center;
+  position: absolute;
+  bottom: 2rem;
+  left: 35%;
+`;

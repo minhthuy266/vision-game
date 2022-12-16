@@ -148,6 +148,7 @@ export const HeaderContainer = styled.div`
   .ant-menu-horizontal .ant-menu-item,
   .ant-menu-horizontal .ant-menu-submenu-title {
     transition: none;
+    cursor: pointer;
   }
 
   .ant-menu-overflow-item.ant-menu-item {
@@ -157,6 +158,10 @@ export const HeaderContainer = styled.div`
     svg {
       margin-right: 10px;
     }
+  }
+
+  .ant-menu-horizontal > .ant-menu-submenu::after {
+    display: none;
   }
 `;
 
@@ -175,6 +180,8 @@ export const StyledLoginBtn = styled.div`
     background: ${(props) =>
       props.isLoginScreen ? "rgba(35, 168, 245, 0.2)" : ""};
   }
+
+  padding-left: 2rem;
 `;
 
 export const StyledMenuTabletMobile = styled.div`

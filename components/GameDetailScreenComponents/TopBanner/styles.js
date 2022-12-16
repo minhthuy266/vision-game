@@ -13,6 +13,10 @@ export const StyledTopBannerContainer = styled.div`
 export const StyledGameIcon = styled.div`
   position: absolute;
   bottom: -3rem;
+
+  img {
+    border-radius: 12px;
+  }
 `;
 
 export const StyledGroupBtn = styled.div`

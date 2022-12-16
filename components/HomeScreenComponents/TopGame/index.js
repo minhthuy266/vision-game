@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Image1 from "public/assets/images/HomeScreen_TopGame1.png";
 import Image2 from "public/assets/images/HomeScreen_TopGame2.png";
 import Image3 from "public/assets/images/HomeScreen_TopGame3.png";
@@ -53,10 +54,16 @@ const TopGame = ({ topGameList }) => {
     },
   ];
 
+  const router = useRouter();
+
   return (
     <StyledWrapper>
       <StyledSectionWrapper>
-        <HeaderSection href="/" title="Game Hot" />
+        <HeaderSection
+          href="/game-store"
+          title="Game Hot"
+          hasViewAllBtn={router.pathname === "/game-store" ? false : true}
+        />
         <Swiper
           spaceBetween={20}
           slidesPerView={1}

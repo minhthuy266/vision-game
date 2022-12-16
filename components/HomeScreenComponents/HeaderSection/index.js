@@ -11,14 +11,16 @@ const HeaderSection = ({ title, href, hasViewAllBtn }) => {
         <TopGameIcon /> &nbsp; {title}
       </div>
 
-      <div>
-        <Link href={href}>
-          <>
-            Xem tất cả &nbsp;
-            <ExpandRight />{" "}
-          </>
-        </Link>
-      </div>
+      {hasViewAllBtn && (
+        <div>
+          <Link href={href}>
+            <>
+              Xem tất cả &nbsp;
+              <ExpandRight />{" "}
+            </>
+          </Link>
+        </div>
+      )}
     </StyledHeader>
   );
 };

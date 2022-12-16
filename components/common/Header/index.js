@@ -1,8 +1,8 @@
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer, Menu } from "antd";
 import axios from "axios";
-import md5 from "md5";
-import { signOut, useSession } from "next-auth/react";
+import { getGameCategories } from "feature/gameSlice";
+import { handleUserInfo } from "feature/userSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -17,14 +17,13 @@ import {
   StyledMenuDesktop,
   StyledMenuTabletMobile,
 } from "./styles";
-import { handleUserInfo } from "feature/user/userSlice";
-import Cookies from "js-cookie";
 
 const Header = () => {
   const router = useRouter();
   const [current, setCurrent] = useState(router.pathname);
   const [active, setActive] = useState("5");
   const [isLoginScreen, setIsLoginScreen] = useState(false);
+  const dispatch = useDispatch();
 
   const { pathname } = useRouter();
 
@@ -32,9 +31,13 @@ const Header = () => {
 
   async function handleLogout() {
     await axios.get("/api/logout");
-    // await axios.get("https://auth.visionid.vn/logout/game-portal-sandbox");
 
-    await dispatch(handleUserInfo(null));
+    setTimeout(() => {
+      window.location.href =
+        "https://auth.visionid.vn/logout/game-portal-sandbox";
+    }, 500);
+
+    dispatch(handleUserInfo(null));
   }
 
   useEffect(() => {
@@ -42,6 +45,10 @@ const Header = () => {
       ? setIsLoginScreen(true)
       : setIsLoginScreen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    dispatch(getGameCategories());
+  }, [dispatch]);
 
   // const isAuthedStorage = JSON.parse(localStorage.getItem("isAuthed"));
 
@@ -87,6 +94,7 @@ const Header = () => {
       label: userInfo ? (
         <div
           style={{ display: "flex", alignItems: "center", paddingLeft: "2rem" }}
+          className="dropdown"
         >
           <Image
             src={userInfo.profilePhoto}
@@ -120,12 +128,10 @@ const Header = () => {
             {
               label: (
                 <a
-                  // target="_blank"
                   onClick={() => {
                     handleLogout();
                   }}
                   // href="https://auth.visionid.vn/logout/game-portal-sandbox"
-                  // rel="noreferrer"
                 >
                   Đăng xuất
                 </a>
@@ -159,8 +165,6 @@ const Header = () => {
 
   if (error) <p>Loading failed...</p>;
   if (!data) <h1>Loading...</h1>;
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(handleUserInfo(data?.data));

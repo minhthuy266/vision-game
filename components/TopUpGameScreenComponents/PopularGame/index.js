@@ -13,8 +13,13 @@ import GameItem4 from "public/assets/images/HomeScreen_ListGame_Item4.png";
 import GameItem5 from "public/assets/images/HomeScreen_ListGame_Item5.png";
 import GameItem6 from "public/assets/images/HomeScreen_ListGame_Item6.png";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-const PopularGame = () => {
+const PopularGame = ({ topGameList }) => {
+  const router = useRouter();
+
+  console.log("sss", router.asPath.replace("/game/", ""));
+
   const gameList = [
     {
       id: 1,
@@ -61,21 +66,32 @@ const PopularGame = () => {
         </PopularGameContainer>
 
         <StyledBody>
-          {gameList.map((el) => {
-            return (
-              <div key={el.id}>
-                <Link href="/game/vinh-hang-ky-nguyen">
-                  <>
-                    <div>
-                      <Image src={el.img} alt={el.name} />
-                    </div>
+          {topGameList?.intro
+            ?.filter((item) => item._id !== router.asPath.replace("/game/", ""))
+            .map((el) => {
+              return (
+                <div key={el._id}>
+                  <Link href={`/game/${el._id}`}>
+                    <>
+                      <div>
+                        <Image
+                          src={
+                            el.logo === null
+                              ? "https://picsum.photos/seed/picsum/200/300"
+                              : el.logo
+                          }
+                          alt={el.name}
+                          width={100}
+                          height={100}
+                        />
+                      </div>
 
-                    <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
-                  </>
-                </Link>
-              </div>
-            );
-          })}
+                      <div style={{ marginTop: "0.6rem" }}>{el.name}</div>
+                    </>
+                  </Link>
+                </div>
+              );
+            })}
         </StyledBody>
       </StyledSectionWrapper>
     </StyledWrapper>

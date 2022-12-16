@@ -38,8 +38,6 @@ export const getStaticProps = async (ctx) => {
     id: newsSlug,
   });
 
-  console.log("a", data);
-
   return {
     props: {
       newsDetails: data.data,
