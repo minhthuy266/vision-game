@@ -15,6 +15,7 @@ export const StyledHeader = styled.div`
 
 export const StyledBodyNewsList = styled.div`
   padding-right: 2rem;
+  margin-bottom: 8rem;
 
   a:last-child > div {
     border-bottom: 1px solid transparent;

@@ -1,5 +1,5 @@
 import { Pagination } from "antd";
-import { getNews } from "feature/newsSlice";
+import { getNews, handleReset } from "feature/newsSlice";
 import Image from "next/image";
 import Link from "next/link";
 import SpeakerIcon from "public/assets/icons/SpeakerIcon";
@@ -21,8 +21,6 @@ const NewsListComp = ({ data, category, total }) => {
   const [dataNews, setDataNews] = useState([]);
 
   const { newsList, totalNews } = useSelector((state) => state.news);
-
-  console.log("TOTAL", total);
 
   useEffect(() => {
     if (page > 1) {
@@ -73,11 +71,13 @@ const NewsListComp = ({ data, category, total }) => {
         <Pagination
           simple
           total={total}
-          pageSize={2}
+          pageSize={10}
           onChange={(page) => {
             setPage(page);
 
             if (page > 1) {
+              dispatch(handleReset());
+
               dispatch(
                 getNews({
                   page,

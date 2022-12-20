@@ -42,7 +42,7 @@ export const getStaticProps = async (ctx) => {
 
   const allNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 2,
+    limit: 10,
     filter: {
       categories: "tat_ca",
     },
@@ -50,7 +50,7 @@ export const getStaticProps = async (ctx) => {
 
   const hotNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 2,
+    limit: 10,
     filter: {
       categories: "tin_nong",
     },
@@ -58,7 +58,7 @@ export const getStaticProps = async (ctx) => {
 
   const newGameNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 2,
+    limit: 10,
     filter: {
       categories: "game_moi",
     },
@@ -66,7 +66,7 @@ export const getStaticProps = async (ctx) => {
 
   const eventNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 2,
+    limit: 10,
     filter: {
       categories: "su_kien",
     },
@@ -74,7 +74,7 @@ export const getStaticProps = async (ctx) => {
 
   const promoteNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 2,
+    limit: 10,
     filter: {
       categories: "uu_dai",
     },

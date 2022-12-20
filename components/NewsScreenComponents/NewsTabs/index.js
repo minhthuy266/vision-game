@@ -1,6 +1,6 @@
 import { Tabs } from "antd";
-import { getNews } from "feature/newsSlice";
-import { useState } from "react";
+import { getNews, handleReset } from "feature/newsSlice";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import MainNewsComponent from "./MainNewsComponent";
@@ -16,9 +16,10 @@ const NewsTabs = ({
 }) => {
   const [category, setCategory] = useState("tat_ca");
 
+  const dispatch = useDispatch();
+
   const onChange = (key) => {
     console.log(key);
-
     setCategory(key);
   };
 
@@ -88,7 +89,7 @@ const NewsTabs = ({
               children: (
                 <MainNewsComponent
                   data={promoteNews.list}
-                  total={hotNews.total}
+                  total={promoteNews.total}
                   mostViewNews={mostViewNews}
                   category={category}
                 />

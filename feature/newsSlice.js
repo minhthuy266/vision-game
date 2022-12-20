@@ -18,8 +18,11 @@ export const getNews = createAsyncThunk(
       const response = await axios.post(
         `https://dev-rise.visionnetwork.vn/api/news/list`,
         {
+          order: {
+            createdAt: -1,
+          },
           page: page,
-          limit: 2,
+          limit: 10,
           filter: {
             categories: category,
           },
@@ -42,7 +45,11 @@ export const getNews = createAsyncThunk(
 export const newsSlice = createSlice({
   name: "news",
   initialState,
-  reducers: {},
+  reducers: {
+    handleReset: (state) => {
+      state.newsList = [];
+    },
+  },
   extraReducers: {
     [getNews.fulfilled]: (state, { payload }) => {
       state.newsList = payload?.data;
@@ -51,4 +58,5 @@ export const newsSlice = createSlice({
   },
 });
 
+export const { handleReset } = newsSlice.actions;
 export const newsReducer = newsSlice.reducer;

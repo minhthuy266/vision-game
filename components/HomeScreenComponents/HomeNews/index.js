@@ -105,7 +105,11 @@ const HomeNews = ({ homeNewsList }) => {
           <StyledTopNews>
             <div>
               <Image
-                src={homeNewsList?.news_details?.[0].image}
+                src={
+                  homeNewsList?.news_details?.[0].image === null
+                    ? "https://picsum.photos/seed/picsum/200/300"
+                    : homeNewsList?.news_details?.[0].image
+                }
                 alt="News Item 1"
                 width={100}
                 height={100}
@@ -134,7 +138,11 @@ const HomeNews = ({ homeNewsList }) => {
                   <>
                     <div>
                       <Image
-                        src={el.image}
+                        src={
+                          el.image === null
+                            ? "https://picsum.photos/seed/picsum/200/300"
+                            : el.image
+                        }
                         alt={el.title}
                         width={200}
                         height={200}
