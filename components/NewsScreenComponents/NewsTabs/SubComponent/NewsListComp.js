@@ -1,5 +1,14 @@
 import { Pagination } from "antd";
-import { getNews, handleReset } from "feature/newsSlice";
+import {
+  getAllNews,
+  getEventNews,
+  getHotNews,
+  getNewGameNews,
+  getNews,
+  getPromoteNews,
+  handleNewsTab,
+  handleReset,
+} from "feature/newsSlice";
 import Image from "next/image";
 import Link from "next/link";
 import SpeakerIcon from "public/assets/icons/SpeakerIcon";
@@ -14,21 +23,62 @@ import {
   StyledNewsItemTitle,
   StyledPagination,
 } from "./styles";
+import * as postConst from "constant/data";
 
 const NewsListComp = ({ data, category, total }) => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [dataNews, setDataNews] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const { newsList, totalNews } = useSelector((state) => state.news);
+  const {
+    newsList,
+    totalNews,
+    allNews,
+    hotNews,
+    newGameNews,
+    eventNews,
+    promoteNews,
+  } = useSelector((state) => state.news);
 
   useEffect(() => {
     if (page > 1) {
-      setDataNews(newsList?.news_details);
+      if (category === "tat_ca") {
+        setDataNews(allNews?.list);
+        setCurrentPage(allNews?.currentPage);
+        setTotalPages(allNews?.total);
+      } else if (category === "tin_nong") {
+        setDataNews(hotNews?.list);
+        setCurrentPage(hotNews?.currentPage);
+        setTotalPages(hotNews?.total);
+      } else if (category === "game_moi") {
+        setDataNews(newGameNews?.list);
+        setCurrentPage(newGameNews?.currentPage);
+        setTotalPages(newGameNews?.total);
+      } else if (category === "su_kien") {
+        setDataNews(eventNews?.list);
+        setCurrentPage(eventNews?.currentPage);
+        setTotalPages(eventNews?.total);
+      } else if (category === "uu_dai") {
+        setDataNews(promoteNews?.list);
+        setCurrentPage(promoteNews?.currentPage);
+        setTotalPages(promoteNews?.total);
+      }
     } else {
       setDataNews(data?.news_details);
     }
-  }, [data?.news_details, newsList?.news_details, page]);
+  }, [
+    allNews,
+    category,
+    data?.news_details,
+    eventNews,
+    hotNews,
+    newGameNews,
+    newsList?.news_details,
+    page,
+    promoteNews,
+  ]);
 
   return (
     <div>
@@ -71,19 +121,29 @@ const NewsListComp = ({ data, category, total }) => {
         <Pagination
           simple
           total={total}
-          pageSize={10}
+          pageSize={postConst.POST_PER_PAGE}
+          current={currentPage}
           onChange={(page) => {
             setPage(page);
+            dispatch(
+              handleNewsTab({
+                currentPage: page,
+                category,
+              })
+            );
 
             if (page > 1) {
-              dispatch(handleReset());
-
-              dispatch(
-                getNews({
-                  page,
-                  category,
-                })
-              );
+              if (category === "tat_ca") {
+                dispatch(getAllNews({ page }));
+              } else if (category === "tin_nong") {
+                dispatch(getHotNews({ page }));
+              } else if (category === "game_moi") {
+                dispatch(getNewGameNews({ page }));
+              } else if (category === "su_kien") {
+                dispatch(getEventNews({ page }));
+              } else if (category === "uu_dai") {
+                dispatch(getPromoteNews({ page }));
+              }
             }
           }}
         />

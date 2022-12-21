@@ -3,6 +3,7 @@ import Head from "next/head";
 import React from "react";
 import axios from "axios";
 import NewsTabs from "@/components/NewsScreenComponents/NewsTabs/index";
+import * as postConst from "constant/data";
 
 const NewsScreen = ({
   allNews,
@@ -42,7 +43,7 @@ export const getStaticProps = async (ctx) => {
 
   const allNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 10,
+    limit: postConst.POST_PER_PAGE,
     filter: {
       categories: "tat_ca",
     },
@@ -50,7 +51,7 @@ export const getStaticProps = async (ctx) => {
 
   const hotNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 10,
+    limit: postConst.POST_PER_PAGE,
     filter: {
       categories: "tin_nong",
     },
@@ -58,7 +59,7 @@ export const getStaticProps = async (ctx) => {
 
   const newGameNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 10,
+    limit: postConst.POST_PER_PAGE,
     filter: {
       categories: "game_moi",
     },
@@ -66,7 +67,7 @@ export const getStaticProps = async (ctx) => {
 
   const eventNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 10,
+    limit: postConst.POST_PER_PAGE,
     filter: {
       categories: "su_kien",
     },
@@ -74,7 +75,7 @@ export const getStaticProps = async (ctx) => {
 
   const promoteNews = await axios.post(`${process.env.API_URL}/api/news/list`, {
     order: order,
-    limit: 10,
+    limit: postConst.POST_PER_PAGE,
     filter: {
       categories: "uu_dai",
     },
